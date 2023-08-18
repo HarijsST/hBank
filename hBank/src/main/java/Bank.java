@@ -14,7 +14,5 @@ public class Bank {
         person.setSurname("Doe");
         person.setAddress("Milan street 1");
         System.out.println("Taisam konfliktu");
-        System.out.println("Tralalalala...");
-        System.out.println("Viss strādā");
     }
 }
