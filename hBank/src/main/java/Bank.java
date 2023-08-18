@@ -7,5 +7,6 @@ public class Bank {
         System.out.println("Vārds: " + person.name);
         System.out.println("Uzvārds: " + person.surname);
         System.out.println("Adrese: " + person.address);
+        System.out.println("Hi!");
     }
 }
