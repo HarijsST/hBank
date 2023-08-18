@@ -1,7 +1,7 @@
 public class User{
-    long id;
-    String name;
-    String surname;
+    private long id;
+    private String name;
+    private String surname;
 
     public long getId() {
         return id;

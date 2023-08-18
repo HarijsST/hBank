@@ -1,8 +1,8 @@
 public class Account {
-    long id;
-    long userId;
-    double balance;
-    double creditLimit;
+    private long id;
+    private long userId;
+    private double balance;
+    private double creditLimit;
 
     public long getId() {
         return id;

@@ -1,7 +1,7 @@
 public class Customer extends User{
 
-    String address;
-    long personalCode;
+    private String address;
+    private long personalCode;
 
     public String getAddress() {
         return address;

@@ -1,12 +1,12 @@
 public class Bank {
     public static void main(String[] args) {
         Customer person = new Customer();
-        person.name = "Jānis";
-        person.surname = "Bērziņš";
-        person.address = "Brīvības iela 56 - 13";
-        System.out.println("Vārds: " + person.name);
-        System.out.println("Uzvārds: " + person.surname);
-        System.out.println("Adrese: " + person.address);
-        System.out.println("Hi!");
+        person.setName("Jānis");
+        person.setSurname("Bērziņš");
+        person.setAddress("Brīvibas iela 53 - 13");
+
+        System.out.println(person.getName());
+        System.out.println(person.getSurname());
+        System.out.println(person.getAddress());
     }
 }
