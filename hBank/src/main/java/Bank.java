@@ -8,5 +8,10 @@ public class Bank {
         System.out.println(person.getName());
         System.out.println(person.getSurname());
         System.out.println(person.getAddress());
+
+        Customer secondPerson = new Customer();
+        person.setName("John");
+        person.setSurname("Doe");
+        person.setAddress("Milan street 1");
     }
 }
