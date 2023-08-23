@@ -1,15 +1,10 @@
 public class Account {
     private long id;
-    private long userId;
     private double balance;
     private double creditLimit;
 
     public long getId() {
         return id;
-    }
-
-    public long getUserId() {
-        return userId;
     }
 
     public double getBalance() {
@@ -24,10 +19,6 @@ public class Account {
         this.id = id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
     public void setBalance(double balance) {
         this.balance = balance;
     }
@@ -40,7 +31,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", userId=" + userId +
+                ", userId=" +
                 ", balance=" + balance +
                 ", creditLimit=" + creditLimit +
                 '}';
