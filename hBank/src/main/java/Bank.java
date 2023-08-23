@@ -146,7 +146,7 @@ public class Bank {
         System.out.println("Paldies! Jauns klients izveidots.");
     }
 
-    private void printAllCustomers() {
+    private static void printAllCustomers() {
         for (Customer customer : customers) {
             System.out.println("Klienta vārds uzvārds: " + customer.getName() + " " + customer.getSurname());
             System.out.println("Klienta adrese: " + customer.getAddress());
