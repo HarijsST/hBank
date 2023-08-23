@@ -115,7 +115,16 @@ public class Bank {
 
         System.out.println("Ievadiet klienta personas kodu:");
         Scanner scan = new Scanner(System.in);
-        String personalCode = scan.nextLine();
+        boolean pc = true;
+        String personalCode = "";
+        while(pc) {
+            personalCode = scan.nextLine();
+            if (!personalCode.matches("[0-9]+")) {
+                System.out.println("Personas kods ievadīts nekorekti \n" + "Lūdzu ievadīt personas kodu");
+                continue;
+            }
+            pc = false;
+        }
         String personalCodeF = personalCode.substring(0,6) + "-" + personalCode.substring(6);
         person.setPersonalCode(personalCodeF);
 
