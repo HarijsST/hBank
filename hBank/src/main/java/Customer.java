@@ -4,7 +4,7 @@ public class Customer extends User {
 
     private String address;
     private String personalCode;
-    private List account;
+    private List<Account> account; //Neazimirstam pielikt klāt tipu. Izlabo tipu arī citviet
 
     public String getAddress() {
         return address;
