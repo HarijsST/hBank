@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,101 +7,95 @@ public class Bank {
     static List<Customer> customers = new ArrayList<>();
 
     public static void main(String[] args) {
-        String action = "";
         System.out.println("Sveicināti HBank!");
         int select;
-        boolean isRunning = true; //Mainīgā nosaukums(!) takeInput, isRunning
+        boolean isRunning = true;
         Scanner sc = new Scanner(System.in);
         while (isRunning) {
-            menu(action);
-            select = sc.nextInt(); // šeit būs select ievade
+            printMenu();
+            select = sc.nextInt();
+
+            // Pārlikt uz String value = sc.nextLine()
+            // Pārbaudīt vai tas ir skaitlis vai nē
+            // Ja tas ir skaitlis - turpinam un uzliekam to vērtību uz mainīgo select
+            // Ja tas nav skaitlis - tad šo select pārliekam uz tādu vērtību, kas aizietu uz default
+            //Integer.parseInt("d");
+
             switch (select) {
-                case 1:
-                    System.out.println("Jūs izvēlējāties \"Izveidot jaunu klientu\"");
-                    newUser();
-                    break;
-                case 2:
-                    System.out.println("Pievienot klientam jaunu kontu");
-                    System.out.println("Sadaļa atrodas izstrādes stadijā.");
-                    break;
-                case 3:
-                    System.out.println("Izvadīt visus klientus");
-                    printAllCustomers();
-                    break;
-                case 4:
-                    System.out.println("Izvadīt visus klienta kontus");
-                    System.out.println("Sadaļa atrodas izstrādes stadijā.");
-                    break;
-                case 5:
-                    System.out.println("Nomainīt klienta datus");
-                    System.out.println("Sadaļa atrodas izstrādes stadijā.");
-                    break;
-                case 6:
-                    System.out.println("Nomainīt klienta konta datus");
-                    System.out.println("Sadaļa atrodas izstrādes stadijā.");
-                    break;
-                case 7:
-                    System.out.println("Izdzēst klientu");
-                    deleteCustomer();
-                    break;
-                case 8:
-                    System.out.println("Izdzēst klienta kontu");
-                    System.out.println("Sadaļa atrodas izstrādes stadijā.");
-                    break;
-                case 9:
+                case 1 -> newUser();
+                case 2 -> printSectionNotImplemented("Pievienot klientam jaunu kontu");
+                case 3 -> printAllCustomers();
+                case 4 -> printSectionNotImplemented("Izvadīt visus klienta kontus");
+                case 5 -> printSectionNotImplemented("Nomainīt klienta datus");
+                case 6 -> printSectionNotImplemented("Nomainīt klienta konta datus");
+                case 7 -> deleteCustomer();
+                case 8 -> printSectionNotImplemented("Izdzēst klienta kontu");
+                case 9 -> {
                     System.out.println("Jūs izvēlējāties pārtraukt darbu - paldies un uz redzēšanos!");
                     isRunning = false;
-                    break;
-                default:
-                    System.out.println("Ievadītā izvēlne nepastāv.");
-                    isRunning = true;
+                }
+                default -> System.out.println("Ievadītā izvēlne nepastāv");
             }
         }
     }
 
     public static void newUser() {
+        System.out.println("Jūs izvēlējāties \"Izveidot jaunu klientu\"");
+
         Scanner sc = new Scanner(System.in);
         Customer person = new Customer();
+
         System.out.println("Ievadiet klienta vārdu:");
-        String name = sc.next();
-        String nameF = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
-        person.setName(nameF);
+        String name = sc.nextLine();
+        String nameFormatted = getValueWithFirstCapitalLetter(name);
+        person.setName(nameFormatted);
 
         System.out.println("Ievadiet klienta uzvārdu:");
-        String surname = sc.next();
-        String surnameF = surname.substring(0, 1).toUpperCase() + surname.substring(1).toLowerCase();
-        person.setSurname(surnameF);
+        String surname = sc.nextLine();
+        String surnameFormatted = getValueWithFirstCapitalLetter(surname);
+        person.setSurname(surnameFormatted);
 
         System.out.println("Ievadiet klienta adresi:");
-        Scanner sci = new Scanner(System.in); // Nesapratu kādēļ šeit vajag vēl vienu Scanneri veidot
-        String address = sci.nextLine();
+        String address = sc.nextLine();
         person.setAddress(address);
 
         System.out.println("Ievadiet klienta personas kodu:");
-        Scanner scan = new Scanner(System.in);
-        boolean pc = true;
-        String personalCode = "";
-        while (pc) {
-            personalCode = scan.nextLine();
-            if (!personalCode.matches("[0-9]+")) {
-                System.out.println("Personas kods ievadīts nekorekti \n" + "Lūdzu ievadīt personas kodu");
-                continue;
-            }
-            pc = false;
-        }
-        String personalCodeF = personalCode.substring(0, 6) + "-" + personalCode.substring(6, 11);
-        person.setPersonalCode(personalCodeF);
+        String personalCode = sc.nextLine();
+        validatePersonalCode(personalCode);
+        person.setPersonalCode(personalCode);
 
         customers.add(person);
 
-        System.out.println("Klienta vārds uzvārds: " + person.getName() + " " + person.getSurname());
-        System.out.println("Klienta adrese: " + person.getAddress());
-        System.out.println("Klienta personas kods: " + person.getPersonalCode());
-
+        System.out.println(person);
         System.out.println("Paldies! Jauns klients izveidots.");
     }
 
+    private static String getValueWithFirstCapitalLetter(String value) {
+        return value.substring(0, 1).toUpperCase() + value.substring(1).toLowerCase();
+    }
+
+    private static void printSectionNotImplemented(String message) {
+        System.out.println(message);
+        System.out.println("Sadaļa atrodas izstrādes stadijā");
+    }
+
+    private static void validatePersonalCode(String personalCode) {
+        // Šo pagaidām noparkojam, vēlāk atgriezīsimies
+//        boolean pc = true;
+//        String personalCode = "";
+//        while (pc) {
+//            personalCode = scan.nextLine();
+//            if (!personalCode.matches("[0-9]+")) {
+//                System.out.println("Personas kods ievadīts nekorekti \n" + "Lūdzu ievadīt personas kodu");
+//                continue;
+//            }
+//            pc = false;
+//        }
+//        String personalCodeF = personalCode.substring(0, 6) + "-" + personalCode.substring(6, 11);
+    }
+
     private static void printAllCustomers() {
+        System.out.println("Izvadīt visus klientus");
         for (Customer customer : customers) {
             System.out.println("Klienta vārds uzvārds: " + customer.getName() + " " + customer.getSurname());
             System.out.println("Klienta adrese: " + customer.getAddress());
@@ -111,53 +104,55 @@ public class Bank {
     }
 
     private static void deleteCustomer() {
+        System.out.println("Izdzēst klientu");
         Scanner sc2 = new Scanner(System.in);
         boolean takeInput = true;
         while (takeInput) {
             System.out.println("Ievadīt kritēriju pēc kura vēlaties dzēst klientu. \n" + "1. Pēc vārda \n" + "2. Pēc uzvārda \n" + "3. Pēc adreses \n" + "4. Pēc personas koda \n" + "5. Atgriezties uz sākumu");
             int criterion = sc2.nextInt();
+            Customer custToDelete = null;
             switch (criterion) {
                 case 1:
                     System.out.println("Ievadīt klienta vārdu");
                     Scanner sc3 = new Scanner(System.in);
                     String inputName = sc3.nextLine();
-                    Customer custToDelete = null;
-                    for(Customer customer:customers){
-                        if(customer.getName().equals(inputName))
+                    //getCustomersByName
+                    for (Customer customer : customers) {
+                        if (customer.getName().equals(inputName))
                             custToDelete = customer;
                     }
 
-                    if(custToDelete==null)
+                    if (custToDelete == null) {
                         System.out.println("Šāds klients netika atrasts");
-                    else
+                    } else {
                         customers.remove(custToDelete);
+                    }
                     System.out.println("Klients ir izdzēsts");
                     break;
                 case 2:
                     System.out.println("Ievadīt klienta uzvārdu");
                     Scanner sc4 = new Scanner(System.in);
                     String inputSurname = sc4.nextLine();
+
+                    //getCustomersBySurname
                     for (Customer customer : customers) {
-                        if (customer.getSurname().equals(inputSurname)) {
-                            customers.remove(customer.getName());
-                            customers.remove(customer.getSurname());
-                            customers.remove(customer.getAddress());
-                            customers.remove(customer.getPersonalCode());
-                            System.out.println(customers);
-                        }
+                        if (customer.getSurname().equals(inputSurname))
+                            custToDelete = customer;
                     }
+                    if (custToDelete == null) {
+                        System.out.println("Šāds klients netika atrasts");
+                    } else {
+                        customers.remove(custToDelete);
+                    }
+
                     break;
                 case 3:
                     System.out.println("Ievadīt klienta adresi");
                     Scanner sc5 = new Scanner(System.in);
                     String inputAddress = sc5.nextLine();
-                    for (Customer customer : customers) {
-                        if (customer.getAddress().equals(inputAddress)) {
+                    List<Customer> customersFound = getCustomersByAddress(inputAddress);
+                    deleteCustomersByList(customersFound); // šo varēsi visur izmantot
 
-
-                            System.out.println(customers);
-                        }
-                    }
                     break;
                 case 4:
                     System.out.println("Ievadīt klienta personas kodu");
@@ -181,8 +176,23 @@ public class Bank {
         }
     }
 
-    public static void menu(String action){
-       action = "Izvēlaties darbību:\n" +
+    private static void deleteCustomersByList(List<Customer> customersFound) {
+        for (int i = 0; i < customersFound.size(); i++) {
+            customers.remove(customersFound.remove(i));
+        }
+    }
+
+    private static List<Customer> getCustomersByAddress(String inputAddress) {
+        List<Customer> customersFound = new ArrayList<>();
+        for (Customer customer : customers) {
+            if (customer.getSurname().equals(inputAddress))
+                customersFound.add(customer);
+        }
+        return customersFound;
+    }
+
+    public static void printMenu() {
+        String action = "Izvēlaties darbību:\n" +
                 "1. Izveidot jaunu klientu\n" +
                 "2. Pievienot klientam jaunu kontu\n" +
                 "3. Izvadīt visus klientus\n" +
