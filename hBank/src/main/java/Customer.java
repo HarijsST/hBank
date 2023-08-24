@@ -22,11 +22,11 @@ public class Customer extends User {
         this.personalCode = personalCode;
     }
 
-    public List getAccount() {
+    public List<Account> getAccount() {
         return account;
     }
 
-    public void setAccount(List account) {
+    public void setAccount(List<Account> account) {
         this.account = account;
     }
 
