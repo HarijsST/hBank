@@ -9,18 +9,23 @@ public class Bank {
     public static void main(String[] args) {
         System.out.println("Sveicināti HBank!");
         int select;
+        String value;
         boolean isRunning = true;
         Scanner sc = new Scanner(System.in);
         while (isRunning) {
             printMenu();
-            select = sc.nextInt();
+            value = sc.nextLine();
 
             // Pārlikt uz String value = sc.nextLine()
             // Pārbaudīt vai tas ir skaitlis vai nē
             // Ja tas ir skaitlis - turpinam un uzliekam to vērtību uz mainīgo select
             // Ja tas nav skaitlis - tad šo select pārliekam uz tādu vērtību, kas aizietu uz default
             //Integer.parseInt("d");
-
+            try{
+                select = Integer.parseInt(value);
+            }catch (Exception e){
+                select = 0; // '0', jo šāda izvēlne nepastāv
+            };
             switch (select) {
                 case 1 -> newUser();
                 case 2 -> printSectionNotImplemented("Pievienot klientam jaunu kontu");
