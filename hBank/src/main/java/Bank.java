@@ -22,16 +22,15 @@ public class Bank {
             // Ja tas ir skaitlis - turpinam un uzliekam to vērtību uz mainīgo select
             // Ja tas nav skaitlis - tad šo select pārliekam uz tādu vērtību, kas aizietu uz default
             //Integer.parseInt("d");
-            try{
+            if(isNumeric(value)){
                 select = Integer.parseInt(value);
-            }catch (Exception e){
+            }else{
                 System.out.println("Ievadiet skaitli no 1 - 9");
-                select = 0; // '0', jo šāda izvēlne nepastāv
-
-            };
+                select = 0;
+            }
             switch (select) {
                 case 1 -> newUser();
-                case 2 -> createClientAccount();
+                case 2 -> createClientAccount(sc, value);
                 case 3 -> printAllCustomers();
                 case 4 -> printSectionNotImplemented("Izvadīt visus klienta kontus");
                 case 5 -> printSectionNotImplemented("Nomainīt klienta datus");
@@ -47,7 +46,8 @@ public class Bank {
         }
     }
 
-    public static void createClientAccount(){
+    public static void createClientAccount(Scanner sc, String value){
+        String acc = null;
         // Valsts kods un Bankas kods vienmēr paliks nemainīgi
         final String countryCode = "LV", bankCode = "BANK";
         // 2 kontrolcipari, kurus automātiski uzģenerēs banka
@@ -55,25 +55,39 @@ public class Bank {
         int checkDigit = rand.nextInt(9, 100);
         String automaticGeneratedCode = String.valueOf(Integer.parseInt(String.valueOf(checkDigit)));
         // Izveidojam klientam konta Nr. no 13 skaitļiem
-        Scanner sc = new Scanner(System.in);
+        int emptyDigits = 0;
         boolean isAccValid = true;
-        String shortAccountToString = null;
-        while(isAccValid){
-            System.out.println("Ievadīt jaunizveidoto klienta konta Nr.");
-            int shortAccount = sc.nextInt();
-            try {
-                shortAccountToString = String.valueOf(Integer.parseInt(String.valueOf(shortAccount)));
+        String counter = "";
+        while(isAccValid) {
+            System.out.printf("Ievadīt klienta jaunizveidoto konta Nr.");
+            value = sc.nextLine();
+            if (isNumeric(value)) {
+                acc = value;
                 isAccValid = false;
-            }catch (Exception e){
-                System.out.println("Neprecīzi ievadīts konta Nr.");
+            } else {
+                System.out.println("Klienta jaunizveidotajs konts ievadīts neprecīzi");
                 isAccValid = true;
             }
+            emptyDigits = 12 - acc.length();
+            for(int i = 0; i <= emptyDigits; i++) {
+                counter = counter + i;
+            }
         }
-        
-        String clientAccount = countryCode + automaticGeneratedCode + bankCode + shortAccountToString;
+        System.out.println(counter);
+        String clientAccount = countryCode + automaticGeneratedCode + bankCode + counter + acc;
         System.out.println(clientAccount);
+    }
 
-
+    public static boolean isNumeric(String value){
+        if(value == null){
+            return false;
+        }
+        try{
+            int xx = Integer.parseInt(value);
+        }catch (NumberFormatException nfe){
+            return false;
+        }
+        return true;
     }
     public static void newUser() {
         System.out.println("Jūs izvēlējāties \"Izveidot jaunu klientu\"");
