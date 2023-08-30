@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Bank {
@@ -24,11 +25,13 @@ public class Bank {
             try{
                 select = Integer.parseInt(value);
             }catch (Exception e){
+                System.out.println("Ievadiet skaitli no 1 - 9");
                 select = 0; // '0', jo šāda izvēlne nepastāv
+
             };
             switch (select) {
                 case 1 -> newUser();
-                case 2 -> printSectionNotImplemented("Pievienot klientam jaunu kontu");
+                case 2 -> createClientAccount();
                 case 3 -> printAllCustomers();
                 case 4 -> printSectionNotImplemented("Izvadīt visus klienta kontus");
                 case 5 -> printSectionNotImplemented("Nomainīt klienta datus");
@@ -39,11 +42,39 @@ public class Bank {
                     System.out.println("Jūs izvēlējāties pārtraukt darbu - paldies un uz redzēšanos!");
                     isRunning = false;
                 }
-                default -> System.out.println("Ievadītā izvēlne nepastāv");
+                default -> System.out.println("Šāda izvēlne nepastāv");
             }
         }
     }
 
+    public static void createClientAccount(){
+        // Valsts kods un Bankas kods vienmēr paliks nemainīgi
+        final String countryCode = "LV", bankCode = "BANK";
+        // 2 kontrolcipari, kurus automātiski uzģenerēs banka
+        Random rand = new Random();
+        int checkDigit = rand.nextInt(9, 100);
+        String automaticGeneratedCode = String.valueOf(Integer.parseInt(String.valueOf(checkDigit)));
+        // Izveidojam klientam konta Nr. no 13 skaitļiem
+        Scanner sc = new Scanner(System.in);
+        boolean isAccValid = true;
+        String shortAccountToString = null;
+        while(isAccValid){
+            System.out.println("Ievadīt jaunizveidoto klienta konta Nr.");
+            int shortAccount = sc.nextInt();
+            try {
+                shortAccountToString = String.valueOf(Integer.parseInt(String.valueOf(shortAccount)));
+                isAccValid = false;
+            }catch (Exception e){
+                System.out.println("Neprecīzi ievadīts konta Nr.");
+                isAccValid = true;
+            }
+        }
+        
+        String clientAccount = countryCode + automaticGeneratedCode + bankCode + shortAccountToString;
+        System.out.println(clientAccount);
+
+
+    }
     public static void newUser() {
         System.out.println("Jūs izvēlējāties \"Izveidot jaunu klientu\"");
 
