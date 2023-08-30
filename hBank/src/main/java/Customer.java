@@ -4,7 +4,7 @@ public class Customer extends User {
 
     private String address;
     private String personalCode;
-    private List account;
+    private List<Account> account;
 
     public String getAddress() {
         return address;
@@ -22,20 +22,18 @@ public class Customer extends User {
         this.personalCode = personalCode;
     }
 
-    public List getAccount() {
+    public List<Account> getAccount() {
         return account;
     }
 
-    public void setAccount(List account) {
+    public void setAccount(List<Account> account) {
         this.account = account;
     }
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "address='" + address + '\'' +
-                ", personalCode='" + personalCode + '\'' +
-                ", account=" + account +
-                '}';
+        return "Klienta vārds uzvārds: " + getName() + " " + getSurname() + "\n" +
+                "Klienta adrese: " + address + "\n" +
+                "Klienta personas kods: " + personalCode;
     }
 }
