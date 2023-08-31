@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends User {
 
     private String address;
     private String personalCode;
-    private List<Account> account;
+    private List<Account> account = new ArrayList<>();
 
     public String getAddress() {
         return address;
@@ -28,6 +29,10 @@ public class Customer extends User {
 
     public void setAccount(List<Account> account) {
         this.account = account;
+    }
+
+    public void addAccount(Account account) {
+        // paņemt account sarakstu un tam pievienot klāt šo account izmantojot add metodi;
     }
 
     @Override

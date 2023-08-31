@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class Bank {
 
+    //Piezīmes
+    //(CTRL + ALT + L) Format
+    //Gang of Four (Desing patterns)
+
     static List<Customer> customers = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -16,18 +20,19 @@ public class Bank {
         while (isRunning) {
             printMenu();
             value = sc.nextLine();
-
-            // Pārlikt uz String value = sc.nextLine()
-            // Pārbaudīt vai tas ir skaitlis vai nē
-            // Ja tas ir skaitlis - turpinam un uzliekam to vērtību uz mainīgo select
-            // Ja tas nav skaitlis - tad šo select pārliekam uz tādu vērtību, kas aizietu uz default
-            //Integer.parseInt("d");
-            if(isNumeric(value)){
+            if (isNumeric(value)) {
                 select = Integer.parseInt(value);
-            }else{
+            } else {
                 System.out.println("Ievadiet skaitli no 1 - 9");
                 select = 0;
             }
+            /**
+             * Uzdevums!!!!!!!
+             * 1. Pabeigt createClientAccount
+             * 2. Pieslīpēt deleteCustomer
+             * 3. Implementēt "Izvadīt visus klienta kontus"
+             */
+
             switch (select) {
                 case 1 -> newUser();
                 case 2 -> createClientAccount(sc);
@@ -46,7 +51,17 @@ public class Bank {
         }
     }
 
-    public static void createClientAccount(Scanner sc){
+    public static void createClientAccount(Scanner sc) {
+        // 1. Paprasīt lietotājam, kuru Customer viņš vēlas izmantojot personas kodu
+        // 2. Paņemam sarakstu ar visiem lietotājiem un atrast to, kuram personas kods atbilst
+        // 2(Turpinājums) vai arī izveidojam metodi, kas mums atrod lietotāju pēč personas koda
+        // 3. Paprasam lietotājam konta detaļas - bilance un kredītlimits
+        // 3(Turpinājums) id uzģenerējam paši
+        // 4. Izveidojam kontu
+        // 4.1 Pievienojam Customer klase jaunu metodi ar nosaukumu "void addAccount(Account account)"
+        // 5. Pievienojam jaunizveidoto kontu klāt Customer objektam
+
+
         String acc = "";
         // Valsts kods un Bankas kods vienmēr paliks nemainīgi
         final String countryCode = "LV", bankCode = "BANK";
@@ -58,7 +73,7 @@ public class Bank {
         int emptyDigits = 0;
         boolean isAccValid = true;
         String counter = "";
-        while(isAccValid) {
+        while (isAccValid) {
             System.out.printf("Ievadīt klienta jaunizveidoto konta Nr.");
             String value = sc.nextLine();
             if (isNumeric(value)) {
@@ -69,30 +84,35 @@ public class Bank {
                 isAccValid = true;
             }
             emptyDigits = 12 - acc.length();
-            for(int i = 0; i <= emptyDigits; i++) {
+            for (int i = 0; i <= emptyDigits; i++) {
                 counter = counter + i;
             }
         }
-        StringBuilder clientAccount = new StringBuilder();
-        clientAccount.append(countryCode);
-        clientAccount.append(automaticGeneratedCode);
-        clientAccount.append(bankCode);
-        clientAccount.append(counter);
-        clientAccount.append(acc);
-        System.out.println("Klienta konts ir izveidots: " + clientAccount);
+        String accountNumber = new StringBuilder()
+                .append(countryCode)
+                .append(automaticGeneratedCode)
+                .append(bankCode)
+                .append(counter)
+                .append(acc)
+                .toString();
+        System.out.println("Klienta konts ir izveidots: " + accountNumber);
+        // Account account = new Account();
+        // account.setAccountNumber(accountNumber);
+        // customer.addAccount(account);
     }
 
-    public static boolean isNumeric(String value){
-        if(value == null){
+    public static boolean isNumeric(String value) {
+        if (value == null) {
             return false;
         }
-        try{
+        try {
             int parsedValue = Integer.parseInt(value);
-        }catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
     }
+
     public static void newUser() {
         System.out.println("Jūs izvēlējāties \"Izveidot jaunu klientu\"");
 
@@ -158,6 +178,9 @@ public class Bank {
     }
 
     private static void deleteCustomer() {
+        //Šo metodi vajadžētu patīrīt
+        // 1. Varbūt viens Scanners objets
+        // 2. Pārlikt visus case lai ir pēc tāda principa kā aprakstīts case "3"
         System.out.println("Izdzēst klientu");
         Scanner sc2 = new Scanner(System.in);
         boolean takeInput = true;

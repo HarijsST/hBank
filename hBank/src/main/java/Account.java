@@ -3,6 +3,8 @@ public class Account {
     private double balance;
     private double creditLimit;
 
+    private String accountNumber;
+
     public long getId() {
         return id;
     }
