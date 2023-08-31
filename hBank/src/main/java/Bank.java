@@ -47,7 +47,7 @@ public class Bank {
     }
 
     public static void createClientAccount(Scanner sc, String value){
-        String acc = null;
+        String acc = "";
         // Valsts kods un Bankas kods vienmēr paliks nemainīgi
         final String countryCode = "LV", bankCode = "BANK";
         // 2 kontrolcipari, kurus automātiski uzģenerēs banka
@@ -73,9 +73,13 @@ public class Bank {
                 counter = counter + i;
             }
         }
-        System.out.println(counter);
-        String clientAccount = countryCode + automaticGeneratedCode + bankCode + counter + acc;
-        System.out.println(clientAccount);
+        StringBuilder clientAccount = new StringBuilder();
+        clientAccount.append(countryCode);
+        clientAccount.append(automaticGeneratedCode);
+        clientAccount.append(bankCode);
+        clientAccount.append(counter);
+        clientAccount.append(acc);
+        System.out.println("Klienta konts ir izveidots: " + clientAccount);
     }
 
     public static boolean isNumeric(String value){
@@ -83,7 +87,7 @@ public class Bank {
             return false;
         }
         try{
-            int xx = Integer.parseInt(value);
+            int parsedValue = Integer.parseInt(value);
         }catch (NumberFormatException nfe){
             return false;
         }
