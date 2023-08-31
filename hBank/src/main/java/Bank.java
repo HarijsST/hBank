@@ -30,7 +30,7 @@ public class Bank {
             }
             switch (select) {
                 case 1 -> newUser();
-                case 2 -> createClientAccount(sc, value);
+                case 2 -> createClientAccount(sc);
                 case 3 -> printAllCustomers();
                 case 4 -> printSectionNotImplemented("Izvadīt visus klienta kontus");
                 case 5 -> printSectionNotImplemented("Nomainīt klienta datus");
@@ -46,7 +46,7 @@ public class Bank {
         }
     }
 
-    public static void createClientAccount(Scanner sc, String value){
+    public static void createClientAccount(Scanner sc){
         String acc = "";
         // Valsts kods un Bankas kods vienmēr paliks nemainīgi
         final String countryCode = "LV", bankCode = "BANK";
@@ -60,7 +60,7 @@ public class Bank {
         String counter = "";
         while(isAccValid) {
             System.out.printf("Ievadīt klienta jaunizveidoto konta Nr.");
-            value = sc.nextLine();
+            String value = sc.nextLine();
             if (isNumeric(value)) {
                 acc = value;
                 isAccValid = false;
