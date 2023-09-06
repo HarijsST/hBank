@@ -12,7 +12,11 @@ public class Bank {
     static List<Customer> customers = new ArrayList<>();
 
     public static void main(String[] args) {
-        System.out.println("Sveicināti HBank!");
+        Calculator calc = new Calculator();
+        calc.inputNumbers();
+        calc.action();
+
+        /*System.out.println("Sveicināti HBank!");
         int select;
         String value;
         boolean isRunning = true;
@@ -26,12 +30,12 @@ public class Bank {
                 System.out.println("Ievadiet skaitli no 1 - 9");
                 select = 0;
             }
-            /**
+            *//**
              * Uzdevums!!!!!!!
              * 1. Pabeigt createClientAccount
              * 2. Pieslīpēt deleteCustomer
              * 3. Implementēt "Izvadīt visus klienta kontus"
-             */
+             *//*
 
             switch (select) {
                 case 1 -> newUser();
@@ -48,7 +52,7 @@ public class Bank {
                 }
                 default -> System.out.println("Šāda izvēlne nepastāv");
             }
-        }
+        }*/
     }
 
     public static void createClientAccount(Scanner sc) {
@@ -96,9 +100,9 @@ public class Bank {
                 .append(acc)
                 .toString();
         System.out.println("Klienta konts ir izveidots: " + accountNumber);
-        // Account account = new Account();
-        // account.setAccountNumber(accountNumber);
-        // customer.addAccount(account);
+        Account account = new Account();
+        account.setAccountNumber(accountNumber);
+        // customers.add(account);
     }
 
     public static boolean isNumeric(String value) {
@@ -118,6 +122,10 @@ public class Bank {
 
         Scanner sc = new Scanner(System.in);
         Customer person = new Customer();
+
+        Random createRandomId = new Random();
+        int Nr = createRandomId.nextInt();
+        person.setId(Nr);
 
         System.out.println("Ievadiet klienta vārdu:");
         String name = sc.nextLine();
@@ -171,6 +179,7 @@ public class Bank {
     private static void printAllCustomers() {
         System.out.println("Izvadīt visus klientus");
         for (Customer customer : customers) {
+            System.out.println("ID: " + customer.getId());
             System.out.println("Klienta vārds uzvārds: " + customer.getName() + " " + customer.getSurname());
             System.out.println("Klienta adrese: " + customer.getAddress());
             System.out.println("Klienta personas kods: " + customer.getPersonalCode());
@@ -182,17 +191,17 @@ public class Bank {
         // 1. Varbūt viens Scanners objets
         // 2. Pārlikt visus case lai ir pēc tāda principa kā aprakstīts case "3"
         System.out.println("Izdzēst klientu");
-        Scanner sc2 = new Scanner(System.in);
+        List<Customer> customersFound = new ArrayList<>();
         boolean takeInput = true;
         while (takeInput) {
+            Scanner sc = new Scanner(System.in);
             System.out.println("Ievadīt kritēriju pēc kura vēlaties dzēst klientu. \n" + "1. Pēc vārda \n" + "2. Pēc uzvārda \n" + "3. Pēc adreses \n" + "4. Pēc personas koda \n" + "5. Atgriezties uz sākumu");
-            int criterion = sc2.nextInt();
+            int criterion = sc.nextInt();
             Customer custToDelete = null;
             switch (criterion) {
                 case 1:
                     System.out.println("Ievadīt klienta vārdu");
-                    Scanner sc3 = new Scanner(System.in);
-                    String inputName = sc3.nextLine();
+                    String inputName = sc.nextLine();
                     //getCustomersByName
                     for (Customer customer : customers) {
                         if (customer.getName().equals(inputName))
@@ -208,8 +217,7 @@ public class Bank {
                     break;
                 case 2:
                     System.out.println("Ievadīt klienta uzvārdu");
-                    Scanner sc4 = new Scanner(System.in);
-                    String inputSurname = sc4.nextLine();
+                    String inputSurname = sc.nextLine();
 
                     //getCustomersBySurname
                     for (Customer customer : customers) {
@@ -224,25 +232,10 @@ public class Bank {
 
                     break;
                 case 3:
-                    System.out.println("Ievadīt klienta adresi");
-                    Scanner sc5 = new Scanner(System.in);
-                    String inputAddress = sc5.nextLine();
-                    List<Customer> customersFound = getCustomersByAddress(inputAddress);
-                    deleteCustomersByList(customersFound); // šo varēsi visur izmantot
-
+                    deleteCustomerByAdress(sc, customersFound);
                     break;
                 case 4:
-                    System.out.println("Ievadīt klienta personas kodu");
-                    Scanner sc6 = new Scanner(System.in);
-                    String inputPersonalCode = sc6.nextLine();
-                    for (Customer customer : customers) {
-                        if (customer.getPersonalCode().equals(inputPersonalCode)) {
-                            customers.remove(customer.getName());
-                            customers.remove(customer.getSurname());
-                            customers.remove(customer.getAddress());
-                            customers.remove(customer.getPersonalCode());
-                        }
-                    }
+                    deleteCustomerByPersonalCode(sc, customersFound);
                     break;
                 case 5:
                     System.out.println("Atgriezties uz sākumu");
@@ -259,10 +252,33 @@ public class Bank {
         }
     }
 
+    private static void deleteCustomerByPersonalCode(Scanner sc, List<Customer> customersFound){
+        System.out.println("Ievadīt klienta personas kodu");
+        String inputPersonalCode = sc.nextLine();
+        customersFound = getCustomersByPersonalCode(inputPersonalCode);
+        deleteCustomersByList(customersFound);
+    }
+
+    private static void deleteCustomerByAdress(Scanner sc, List<Customer> customersFound){
+        System.out.println("Ievadīt klienta adresi");
+        String inputAddress = sc.nextLine();
+        customersFound = getCustomersByAddress(inputAddress);
+        deleteCustomersByList(customersFound); // šo varēsi visur izmantot
+    }
+
     private static List<Customer> getCustomersByAddress(String inputAddress) {
         List<Customer> customersFound = new ArrayList<>();
         for (Customer customer : customers) {
-            if (customer.getSurname().equals(inputAddress))
+            if (customer.getAddress().equals(inputAddress))
+                customersFound.add(customer);
+        }
+        return customersFound;
+    }
+
+    private static List<Customer> getCustomersByPersonalCode(String inputPersonalCode) {
+        List<Customer> customersFound = new ArrayList<>();
+        for (Customer customer : customers) {
+            if (customer.getPersonalCode().equals(inputPersonalCode))
                 customersFound.add(customer);
         }
         return customersFound;

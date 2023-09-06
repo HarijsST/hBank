@@ -29,6 +29,14 @@ public class Account {
         this.creditLimit = creditLimit;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -36,6 +44,7 @@ public class Account {
                 ", userId=" +
                 ", balance=" + balance +
                 ", creditLimit=" + creditLimit +
+                ", accountNumber=" + accountNumber +
                 '}';
     }
 }

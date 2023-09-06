@@ -7,6 +7,8 @@ public class Customer extends User {
     private String personalCode;
     private List<Account> account = new ArrayList<>();
 
+    private String accountNumber;
+
     public String getAddress() {
         return address;
     }
@@ -39,6 +41,6 @@ public class Customer extends User {
     public String toString() {
         return "Klienta vārds uzvārds: " + getName() + " " + getSurname() + "\n" +
                 "Klienta adrese: " + address + "\n" +
-                "Klienta personas kods: " + personalCode;
+                "Klienta personas kods: " + personalCode + "\n";
     }
 }
