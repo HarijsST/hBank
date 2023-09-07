@@ -18,7 +18,7 @@ public class Bank {
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         calc.inputNumbers();
-        calc.action();
+        calc.start();
 
         /*System.out.println("Sveicināti HBank!");
         int select;

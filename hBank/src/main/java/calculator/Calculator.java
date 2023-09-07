@@ -1,32 +1,37 @@
 package calculator;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
     private final Scanner scanner = new Scanner(System.in);
-    private int firstNumber;
-    private int secondNumber;
+    private double firstNumber;
+    private double secondNumber;
 
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
     private List<String> history = new ArrayList<>();
 
-    public int getFirstNumber() {
+    public double getFirstNumber() {
         return firstNumber;
     }
 
-    public void setFirstNumber(int firstNumber) {
+    public void setFirstNumber(double firstNumber) {
         this.firstNumber = firstNumber;
     }
 
-    public int getSecondNumber() {
+    public double getSecondNumber() {
         return secondNumber;
     }
 
-    public void setSecondNumber(int secondNumber) {
+    public void setSecondNumber(double secondNumber) {
         this.secondNumber = secondNumber;
     }
 
+    public Calculator(){
+
+    }
     @Override
     public String toString() {
         return "Calculator{" +
@@ -35,25 +40,21 @@ public class Calculator {
                 '}';
     }
 
-    public void start() {
-        action();
-    }
-
     public void inputNumbers() {
         System.out.println("Ievadīt pirmo skaitli");
-        int number1 = getInputTillIsANumber();
+        double number1 = getInputTillIsANumber();
         setFirstNumber(number1);
         System.out.println("Ievadīt otro skaitli");
-        int number2 = getInputTillIsANumber();
+        double number2 = getInputTillIsANumber();
         setSecondNumber(number2);
     }
 
-    public void action() {
+    public void start() {
         int parsedValue;
         boolean isAction = true;
         while (isAction) {
             printMenu();
-            parsedValue = getInputTillIsANumber();
+            parsedValue = getInputTillIsANumberForStart();
             switch (parsedValue) {
                 case 1 -> System.out.println("Rezultats ir " + sum());
                 case 2 -> System.out.println("Rezultats ir " + subtraction());
@@ -67,7 +68,7 @@ public class Calculator {
         }
     }
 
-    private int getInputTillIsANumber() {
+    private int getInputTillIsANumberForStart() {
         String input;
         int parsedInput = 0;
         boolean isValid = false;
@@ -82,47 +83,76 @@ public class Calculator {
         }
         return parsedInput;
     }
+    private double getInputTillIsANumber() {
+        String input;
+        double parsedInput = 0;
+        boolean isValid = false;
+        while (!isValid) {
+            input = scanner.nextLine();
+            if (isNumeric(input)) {
+                parsedInput = Double.parseDouble(input);
+                isValid = true;
+            } else {
+                System.out.println("Ievaditais nav skaitlis, ievadi vēlreiz");
+            }
+        }
+        return parsedInput;
+    }
 
     public boolean isNumeric(String value) {
         if (value == null) {
             return false;
         }
         try {
-            Integer.parseInt(value);
+            Double.parseDouble(value);
         } catch (NumberFormatException nfe) {
             return false;
         }
         return true;
     }
 
-    public int sum() {
+    public String sum() {
         inputNumbers();
+        addHistoryEventFromSum();
+        return decimalFormat.format(getFirstNumber() + getSecondNumber());
+    }
+
+    public String subtraction() {
+        inputNumbers();
+        addHistoryEventFromSubtraction();
+        return decimalFormat.format(getFirstNumber() - getSecondNumber());
+    }
+
+    public String multiplication() {
+        inputNumbers();
+        addHistoryEventFromMultiplication();
+        return decimalFormat.format(getFirstNumber() * getSecondNumber());
+    }
+
+    public String divide() {
+        inputNumbers();
+        addHistoryEventFromDivide();
+        return decimalFormat.format(getFirstNumber() / getSecondNumber());
+    }
+
+    public void addHistoryEventFromSum(){
         history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                " SECOND:" + getSecondNumber() + " RESULT = " + (getFirstNumber() + getSecondNumber()));
-        return getFirstNumber() + getSecondNumber();
+                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() + getSecondNumber()));
     }
 
-    public int subtraction() {
-        inputNumbers();
-        history.add("ACTION: SUBTRACTION, FIRST: " + getFirstNumber() +
-                " SECOND:" + getSecondNumber() + " RESULT = " + (getFirstNumber() - getSecondNumber()));
-        return getFirstNumber() - getSecondNumber();
+    public void addHistoryEventFromSubtraction(){
+        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
+                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() - getSecondNumber()));
     }
 
-    public int multiplication() {
-        inputNumbers();
-        history.add("ACTION: MULTIPLICATION, FIRST: " + getFirstNumber() +
-                " SECOND:" + getSecondNumber() + " RESULT = " + (getFirstNumber() * getSecondNumber()));
-        return getFirstNumber() * getSecondNumber();
+    public void addHistoryEventFromMultiplication(){
+        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
+                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() * getSecondNumber()));
     }
-
-    public int divide() {
-        inputNumbers();
-        history.add("ACTION: DIVIDE, FIRST: " + getFirstNumber() +
-                " SECOND: " + getSecondNumber() + " RESULT = " + (getFirstNumber() / getSecondNumber()));
-        return getFirstNumber() / getSecondNumber();
+    public void addHistoryEventFromDivide(){
+        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
+                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() / getSecondNumber()));
     }
-
     public void printHistory(){
         if(history.isEmpty()){
             System.out.println("Vēsturē nav saglabātu datu");
@@ -131,7 +161,6 @@ public class Calculator {
                 System.out.println(allHistory);
             }
         }
-
     }
     public void removeHistory() {
         if(history.isEmpty()){
@@ -143,14 +172,15 @@ public class Calculator {
     }
 
     public void printMenu() {
-        String action = "Izvēlaties darbību:\n" +
-                "1. Saskaitīt\n" +
-                "2. Atņemt\n" +
-                "3. Reizināt\n" +
-                "4. Dalīt\n" +
-                "5. Skatīt vēsturi\n" +
-                "6. Izdzēst vēsturi\n" +
-                "7. Pārtraukt darbu";
+        String action = """
+                Izvēlaties darbību:
+                1. Saskaitīt
+                2. Atņemt
+                3. Reizināt
+                4. Dalīt
+                5. Skatīt vēsturi
+                6. Izdzēst vēsturi
+                7. Pārtraukt darbu""";
         System.out.println(action);
     }
 }
