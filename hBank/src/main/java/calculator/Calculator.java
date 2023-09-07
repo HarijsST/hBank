@@ -59,7 +59,7 @@ public class Calculator {
                 case 2 -> System.out.println("Rezultats ir " + subtraction());
                 case 3 -> System.out.println("Rezultats ir " + multiplication());
                 case 4 -> System.out.println("Rezultats ir " + divide());
-                case 5 -> history();
+                case 5 -> printHistory();
                 case 6 -> removeHistory();
                 case 7 -> isAction = false;
                 default -> System.out.println("Sadaļa izstrādes stadijā");
@@ -123,13 +123,17 @@ public class Calculator {
         return getFirstNumber() / getSecondNumber();
     }
 
-    public void history(){
-        for(String allHistory : history){
-            System.out.println(allHistory);
+    public void printHistory(){
+        if(history.isEmpty()){
+            System.out.println("Vēsturē nav saglabātu datu");
+        }else{
+            for(String allHistory : history){
+                System.out.println(allHistory);
+            }
         }
+
     }
     public void removeHistory() {
-        //boolean empty = history.isEmpty();
         if(history.isEmpty()){
             System.out.println("Vēsturē nav saglabātu datu");
         }else{
