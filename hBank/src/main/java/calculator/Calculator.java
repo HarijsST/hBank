@@ -56,10 +56,14 @@ public class Calculator {
             parsedValue = getInputTillIsANumber();
             switch (parsedValue) {
                 case 1 -> System.out.println("Rezultats ir " + sum());
-                case 6 -> isAction = false;
+                case 2 -> System.out.println("Rezultats ir " + subtraction());
+                case 3 -> System.out.println("Rezultats ir " + multiplication());
+                case 4 -> System.out.println("Rezultats ir " + divide());
+                case 5 -> history();
+                case 6 -> removeHistory();
+                case 7 -> isAction = false;
                 default -> System.out.println("Sadaļa izstrādes stadijā");
             }
-            System.out.println(history);
         }
     }
 
@@ -94,8 +98,44 @@ public class Calculator {
     public int sum() {
         inputNumbers();
         history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                " SECOND:" + getSecondNumber());
+                " SECOND:" + getSecondNumber() + " RESULT = " + (getFirstNumber() + getSecondNumber()));
         return getFirstNumber() + getSecondNumber();
+    }
+
+    public int subtraction() {
+        inputNumbers();
+        history.add("ACTION: SUBTRACTION, FIRST: " + getFirstNumber() +
+                " SECOND:" + getSecondNumber() + " RESULT = " + (getFirstNumber() - getSecondNumber()));
+        return getFirstNumber() - getSecondNumber();
+    }
+
+    public int multiplication() {
+        inputNumbers();
+        history.add("ACTION: MULTIPLICATION, FIRST: " + getFirstNumber() +
+                " SECOND:" + getSecondNumber() + " RESULT = " + (getFirstNumber() * getSecondNumber()));
+        return getFirstNumber() * getSecondNumber();
+    }
+
+    public int divide() {
+        inputNumbers();
+        history.add("ACTION: DIVIDE, FIRST: " + getFirstNumber() +
+                " SECOND: " + getSecondNumber() + " RESULT = " + (getFirstNumber() / getSecondNumber()));
+        return getFirstNumber() / getSecondNumber();
+    }
+
+    public void history(){
+        for(String allHistory : history){
+            System.out.println(allHistory);
+        }
+    }
+    public void removeHistory() {
+        //boolean empty = history.isEmpty();
+        if(history.isEmpty()){
+            System.out.println("Vēsturē nav saglabātu datu");
+        }else{
+            history.clear();
+            System.out.println("Vēstures dati ir dzēsti");
+        }
     }
 
     public void printMenu() {
