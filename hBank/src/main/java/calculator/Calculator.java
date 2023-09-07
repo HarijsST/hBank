@@ -29,9 +29,6 @@ public class Calculator {
         this.secondNumber = secondNumber;
     }
 
-    public Calculator(){
-
-    }
     @Override
     public String toString() {
         return "Calculator{" +
@@ -41,10 +38,10 @@ public class Calculator {
     }
 
     public void inputNumbers() {
-        System.out.println("Ievadīt pirmo skaitli");
+        System.out.println("Enter first number");
         double number1 = getInputTillIsANumber();
         setFirstNumber(number1);
-        System.out.println("Ievadīt otro skaitli");
+        System.out.println("Enter second number");
         double number2 = getInputTillIsANumber();
         setSecondNumber(number2);
     }
@@ -56,14 +53,14 @@ public class Calculator {
             printMenu();
             parsedValue = getInputTillIsANumberForStart();
             switch (parsedValue) {
-                case 1 -> System.out.println("Rezultats ir " + sum());
-                case 2 -> System.out.println("Rezultats ir " + subtraction());
-                case 3 -> System.out.println("Rezultats ir " + multiplication());
-                case 4 -> System.out.println("Rezultats ir " + divide());
+                case 1 -> System.out.println("Result: " + sum());
+                case 2 -> System.out.println("Result: " + subtraction());
+                case 3 -> System.out.println("Result: " + multiplication());
+                case 4 -> System.out.println("Result: " + divide());
                 case 5 -> printHistory();
                 case 6 -> removeHistory();
                 case 7 -> isAction = false;
-                default -> System.out.println("Sadaļa izstrādes stadijā");
+                default -> System.out.println("Enter number 1 - 7");
             }
         }
     }
@@ -78,7 +75,7 @@ public class Calculator {
                 parsedInput = Integer.parseInt(input);
                 isValid = true;
             } else {
-                System.out.println("Ievaditais nav skaitlis, ievadi vēlreiz");
+                System.out.println("It`s not a number, enter number 1 - 7");
             }
         }
         return parsedInput;
@@ -93,7 +90,7 @@ public class Calculator {
                 parsedInput = Double.parseDouble(input);
                 isValid = true;
             } else {
-                System.out.println("Ievaditais nav skaitlis, ievadi vēlreiz");
+                System.out.println("It`s not a number, enter number 1 - 7");
             }
         }
         return parsedInput;
@@ -154,7 +151,7 @@ public class Calculator {
 
     public void printHistory(){
         if(history.isEmpty()){
-            System.out.println("Vēsturē nav saglabātu datu");
+            System.out.println("History is empty");
         }else{
             for(String allHistory : history){
                 System.out.println(allHistory);
@@ -163,10 +160,10 @@ public class Calculator {
     }
     public void removeHistory() {
         if(history.isEmpty()){
-            System.out.println("Vēsturē nav saglabātu datu");
+            System.out.println("History is empty");
         }else{
             history.clear();
-            System.out.println("Vēstures dati ir dzēsti");
+            System.out.println("Data from history is deleted");
         }
     }
 
