@@ -113,46 +113,45 @@ public class Calculator {
 
     public String sum() {
         inputNumbers();
-        addHistoryEventFromSum();
+        addHistoryEvent("SUM");
         return decimalFormat.format(getFirstNumber() + getSecondNumber());
     }
 
     public String subtraction() {
         inputNumbers();
-        addHistoryEventFromSubtraction();
+        addHistoryEvent("SUBTRACTION");
         return decimalFormat.format(getFirstNumber() - getSecondNumber());
     }
 
     public String multiplication() {
         inputNumbers();
-        addHistoryEventFromMultiplication();
+        addHistoryEvent("MULTIPLICATION");
         return decimalFormat.format(getFirstNumber() * getSecondNumber());
     }
 
     public String divide() {
         inputNumbers();
-        addHistoryEventFromDivide();
-        return decimalFormat.format(getFirstNumber() / getSecondNumber());
+        String format = decimalFormat.format(getFirstNumber() / getSecondNumber());
+        addHistoryEvent("DIVIDE");
+        return format;
     }
 
-    public void addHistoryEventFromSum(){
-        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() + getSecondNumber()));
+    private void addHistoryEvent(String action) {
+        if(action == "SUM"){
+            history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
+                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() + getSecondNumber()));
+        } else if (action == "SUBTRACTION") {
+            history.add("ACTION: SUBTRACTION, FIRST: " + getFirstNumber() +
+                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() - getSecondNumber()));
+        } else if (action == "MULTIPLICATION") {
+            history.add("ACTION: MULTIPLICATION, FIRST: " + getFirstNumber() +
+                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() * getSecondNumber()));
+        } else if (action == "DIVIDE") {
+            history.add("ACTION: DIVIDE, FIRST: " + getFirstNumber() +
+                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() / getSecondNumber()));
+        }
     }
 
-    public void addHistoryEventFromSubtraction(){
-        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() - getSecondNumber()));
-    }
-
-    public void addHistoryEventFromMultiplication(){
-        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() * getSecondNumber()));
-    }
-    public void addHistoryEventFromDivide(){
-        history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() / getSecondNumber()));
-    }
     public void printHistory(){
         if(history.isEmpty()){
             System.out.println("Vēsturē nav saglabātu datu");
