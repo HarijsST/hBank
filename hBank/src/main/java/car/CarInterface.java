@@ -1,5 +1,8 @@
 package car;
 
+import java.sql.SQLOutput;
+import java.util.Objects;
+
 public class CarInterface {
 
     public static void main(String[] args) {
@@ -40,5 +43,33 @@ public class CarInterface {
 
 
         System.out.println("Cars created: " + Car.getCarsCreated());
+
+        // Equals un ==
+
+        System.out.println("----------    Equals un ==   -----------");
+        int number1 = 1;
+        int number2 = 2;
+        System.out.println("Numbers are == " + (number1 == number2));
+
+        String name1 = "age";
+        String name2 = new String("age");
+        String name3 = "age";
+        String name4 = "a";
+        String name5 = "ge";
+        String name6 = name4 + name5;
+
+
+
+        System.out.println(name1 == name2);
+        System.out.println("name3 == name6 " + (name3 == name6));
+        System.out.println("name3 = " + name3 + " name6 = " + name6);
+        System.out.println(Objects.equals(name2, name1));
+        System.out.println("age".equals(name3));
+
+
+        Car mazda = new Car("Violet");
+        Car bmw =   new Car("Violet");
+        System.out.println("mazda == bmw " + (mazda == bmw)); // Atmiņā tie ir 2 dažādi objekti - false
+        System.out.println("(mazda.equals(bmw))) " + (mazda.equals(bmw))); // true
     }
 }
