@@ -12,10 +12,6 @@ public class Calculator {
 
     private DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
-    // 1. Līmenis - Vai mēs varam nomainīt uz citu objektu? Nē
-    // 2. Līmenis - Vai mēs varam nomainīt saturu? Jā
-    // Šis nav nemaināms objekts (Immutable)
-
     private final List<String> history = new ArrayList<>();
 
     public double getFirstNumber() {
@@ -58,10 +54,10 @@ public class Calculator {
             printMenu();
             parsedValue = getInputTillIsANumberForStart();
             switch (parsedValue) {
-                case 1 -> System.out.println("Result: " + sum());
-                case 2 -> System.out.println("Result: " + subtraction());
-                case 3 -> System.out.println("Result: " + multiplication());
-                case 4 -> System.out.println("Result: " + divide());
+                case 1 -> System.out.println("Result: " + performCalculation(ActionTypes.SUM));
+                case 2 -> System.out.println("Result: " + performCalculation(ActionTypes.SUBTRACTION));
+                case 3 -> System.out.println("Result: " + performCalculation(ActionTypes.MULTIPLICATION));
+                case 4 -> System.out.println("Result: " + performCalculation(ActionTypes.DIVIDE));
                 case 5 -> printHistory();
                 case 6 -> removeHistory();
                 case 7 -> isAction = false;
@@ -114,45 +110,17 @@ public class Calculator {
         return true;
     }
 
-    public String sum() {
+    public String performCalculation(ActionTypes actionType) {
         inputNumbers();
-        addHistoryEvent("SUM");
-        return decimalFormat.format(getFirstNumber() + getSecondNumber());
-    }
-
-    public String subtraction() {
-        inputNumbers();
-        addHistoryEvent("SUBTRACTION");
-        return decimalFormat.format(getFirstNumber() - getSecondNumber());
-    }
-
-    public String multiplication() {
-        inputNumbers();
-        addHistoryEvent("MULTIPLICATION");
-        return decimalFormat.format(getFirstNumber() * getSecondNumber());
-    }
-
-    public String divide() {
-        inputNumbers();
-        String format = decimalFormat.format(getFirstNumber() / getSecondNumber());
-        addHistoryEvent("DIVIDE");
+        String format = switch (actionType) {
+            case SUM -> decimalFormat.format(getFirstNumber() + getSecondNumber());
+            case SUBTRACTION -> decimalFormat.format(getFirstNumber() - getSecondNumber());
+            case MULTIPLICATION -> decimalFormat.format(getFirstNumber() * getSecondNumber());
+            case DIVIDE -> decimalFormat.format(getFirstNumber() / getSecondNumber());
+        };
+        history.add("ACTION: " + actionType.name() + ", FIRST: " + getFirstNumber() +
+                " SECOND: " + getSecondNumber() + " RESULT = " + format);
         return format;
-    }
-
-    private void addHistoryEvent(String action) {
-        if (action == "SUM") {
-            history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
-                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() + getSecondNumber()));
-        } else if (action == "SUBTRACTION") {
-            history.add("ACTION: SUBTRACTION, FIRST: " + getFirstNumber() +
-                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() - getSecondNumber()));
-        } else if (action == "MULTIPLICATION") {
-            history.add("ACTION: MULTIPLICATION, FIRST: " + getFirstNumber() +
-                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() * getSecondNumber()));
-        } else if (action == "DIVIDE") {
-            history.add("ACTION: DIVIDE, FIRST: " + getFirstNumber() +
-                    " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() / getSecondNumber()));
-        }
     }
 
     public void printHistory() {
@@ -185,5 +153,9 @@ public class Calculator {
                 6. Izdzēst vēsturi
                 7. Pārtraukt darbu""";
         System.out.println(action);
+    }
+
+    private enum ActionTypes {
+        SUM, MULTIPLICATION, SUBTRACTION, DIVIDE
     }
 }
