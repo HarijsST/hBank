@@ -10,8 +10,13 @@ public class Calculator {
     private double firstNumber;
     private double secondNumber;
 
-    DecimalFormat decimalFormat = new DecimalFormat("0.00");
-    private List<String> history = new ArrayList<>();
+    private DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
+    // 1. Līmenis - Vai mēs varam nomainīt uz citu objektu? Nē
+    // 2. Līmenis - Vai mēs varam nomainīt saturu? Jā
+    // Šis nav nemaināms objekts (Immutable)
+
+    private final List<String> history = new ArrayList<>();
 
     public double getFirstNumber() {
         return firstNumber;
@@ -80,6 +85,7 @@ public class Calculator {
         }
         return parsedInput;
     }
+
     private double getInputTillIsANumber() {
         String input;
         double parsedInput = 0;
@@ -134,7 +140,7 @@ public class Calculator {
     }
 
     private void addHistoryEvent(String action) {
-        if(action == "SUM"){
+        if (action == "SUM") {
             history.add("ACTION: SUM, FIRST: " + getFirstNumber() +
                     " SECOND: " + getSecondNumber() + " RESULT = " + decimalFormat.format(getFirstNumber() + getSecondNumber()));
         } else if (action == "SUBTRACTION") {
@@ -149,19 +155,20 @@ public class Calculator {
         }
     }
 
-    public void printHistory(){
-        if(history.isEmpty()){
+    public void printHistory() {
+        if (history.isEmpty()) {
             System.out.println("History is empty");
-        }else{
-            for(String allHistory : history){
+        } else {
+            for (String allHistory : history) {
                 System.out.println(allHistory);
             }
         }
     }
+
     public void removeHistory() {
-        if(history.isEmpty()){
+        if (history.isEmpty()) {
             System.out.println("History is empty");
-        }else{
+        } else {
             history.clear();
             System.out.println("Data from history is deleted");
         }

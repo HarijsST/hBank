@@ -1,6 +1,5 @@
 package car;
 
-import java.sql.SQLOutput;
 import java.util.Objects;
 
 public class CarInterface {
@@ -22,7 +21,7 @@ public class CarInterface {
         Car.setBrand("Suzuki");
 
         System.out.println("Klases brand:" + whiteCar.getBrand());
-        System.out.println("Klases brand:" +blueCar.getBrand());
+        System.out.println("Klases brand:" + blueCar.getBrand());
 
 //        car.setColor("White");
 //        car2.setColor("Blue");
@@ -59,7 +58,6 @@ public class CarInterface {
         String name6 = name4 + name5;
 
 
-
         System.out.println(name1 == name2);
         System.out.println("name3 == name6 " + (name3 == name6));
         System.out.println("name3 = " + name3 + " name6 = " + name6);
@@ -68,8 +66,20 @@ public class CarInterface {
 
 
         Car mazda = new Car("Violet");
-        Car bmw =   new Car("Violet");
+        Car bmw = new Car("Violet");
         System.out.println("mazda == bmw " + (mazda == bmw)); // Atmiņā tie ir 2 dažādi objekti - false
         System.out.println("(mazda.equals(bmw))) " + (mazda.equals(bmw))); // true
+
+
+        ImmutableCar immutableCar = new ImmutableCar("Tesla");
+        String immutableCarName = immutableCar.getName();
+        System.out.println(immutableCarName);
+
+        Car car = immutableCar.getCar();
+        System.out.println(immutableCar.getCar().getColor());
+        System.out.println(car.getColor());
+        car.setColor("White");
+        System.out.println(immutableCar.getCar().getColor());
+        System.out.println(car.getColor());
     }
 }
