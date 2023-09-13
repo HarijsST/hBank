@@ -49,17 +49,21 @@ public class SalaryCalculator {
         System.out.println("Valsts sociālās apdrošināšanas obligātās iemaksas - " + decimalFormat.format(resultModel.getSocialTax()));
 
         double apgadajamie = calculatorModel.getReliefForDependents() * calculatorModel.getNumberOfDependents();
-        System.out.println("Atvieglojums par apgādībā esošām personām - " + decimalFormat.format(apgadajamie));
+        resultModel.setDependents(apgadajamie);
+        System.out.println("Atvieglojums par apgādībā esošām personām - " + decimalFormat.format(resultModel.getDependents()));
 
         double apliekamaSumma = calculatorModel.getGrossSalary() - socNodoklis - apgadajamie - 82.14; // Bruto alga ir starp 500 un 1200 eiro, piemēro VID prognozēto diferencēto neapliekamo minimumu 82,14 (eiro)
-        System.out.println("Piemērojamais neapliekamais minimums - " + decimalFormat.format(apliekamaSumma));
+        resultModel.setTaxableAmount(apliekamaSumma);
+        System.out.println("Piemērojamais neapliekamais minimums - " + decimalFormat.format(resultModel.getTaxableAmount()));
 
         calculateIinPercentage();
         double iinSumma = apliekamaSumma * calculatorModel.getIin() / 100;
-        System.out.println("Iedzīvotāju ienākumu nodoklis - " + decimalFormat.format(iinSumma));
+        resultModel.setIncomeTax(iinSumma);
+        System.out.println("Iedzīvotāju ienākumu nodoklis - " + decimalFormat.format(resultModel.getIncomeTax()));
 
         double netoAlga = calculatorModel.getGrossSalary() - socNodoklis - iinSumma;
-        System.out.println("Ikmēneša neto alga (\"uz rokas\") - " + decimalFormat.format(netoAlga));
+        resultModel.setNetSalary(netoAlga);
+        System.out.println("Ikmēneša neto alga (\"uz rokas\") - " + decimalFormat.format(resultModel.getNetSalary()));
     }
 
     public CalculatorModel getCalculatorModel() {
