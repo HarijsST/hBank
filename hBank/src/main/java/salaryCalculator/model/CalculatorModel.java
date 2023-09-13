@@ -1,4 +1,4 @@
-package salaryCalculator;
+package salaryCalculator.model;
 
 public class CalculatorModel {
     private double grossSalary; // bruto alga
