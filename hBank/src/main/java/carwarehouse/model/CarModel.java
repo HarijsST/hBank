@@ -6,7 +6,7 @@ public class CarModel {
 
     // id, brand, model, color, year, type (SUV, Carbriolet ...)
 
-    private long id;
+    public long id;
 
     private String brand;
     private String model;

@@ -20,4 +20,7 @@ public class CarController {
     // printCarById metode šeit
     // CarModel car = carService.getCarById(id);
     // sout(car);
+    public void printCarById(long id){
+        CarModel car = carService.getCarById(id);
+    }
 }

@@ -29,6 +29,10 @@ public class CarService {
     public void deleteAllCars() {
         carRepository.deleteAllCars();
     }
+    public CarModel getCarById(long id) {
+        return carRepository.getCarById(id);
+    }
+
 
     //updateCarBrandByCarId (Update)
     // Finds a car by ID and changes the cars brand
