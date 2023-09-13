@@ -3,12 +3,12 @@ package salaryCalculator;
 public class CalculatorModel {
     private double grossSalary; // bruto alga
     private int numberOfDependents; // apgādājamo skaits
-    private double reliefForDependents = 250; // Atvieglojums par apgādībā esošām personām
+    private  static final double reliefForDependents = 250; // Atvieglojums par apgādībā esošām personām
     private double benefits; // papildus nodokļa atvieglojumus
     private double taxMinimum; // precīzs neapliekamais minimums
     private double iin; // Iedzīvotāju ienākuma nodoklis
-    private  double vsaWorker = 10.5; // Valsts sociālās apdrošināšanas obligātās iemaksas likme DARBINIEKAM
-    private  double vsaEmployer = 23.59; // Valsts sociālās apdrošināšanas obligātās iemaksas likme DARBA DEVĒJAM
+    private static final double vsaWorker = 10.5; // Valsts sociālās apdrošināšanas obligātās iemaksas likme DARBINIEKAM
+    private static final double vsaEmployer = 23.59; // Valsts sociālās apdrošināšanas obligātās iemaksas likme DARBA DEVĒJAM
 
     public double getGrossSalary() {
         return grossSalary;
@@ -28,10 +28,6 @@ public class CalculatorModel {
 
     public double getReliefForDependents() {
         return reliefForDependents;
-    }
-
-    public void setReliefForDependents(double reliefForDependents) {
-        this.reliefForDependents = reliefForDependents;
     }
 
     public double getBenefits() {
@@ -62,16 +58,8 @@ public class CalculatorModel {
         return vsaWorker;
     }
 
-    public void setVsaWorker(double vsaWorker) {
-        this.vsaWorker = vsaWorker;
-    }
-
     public double getVsaEmployer() {
         return vsaEmployer;
-    }
-
-    public void setVsaEmployer(double vsaEmployer) {
-        this.vsaEmployer = vsaEmployer;
     }
 
     @Override
@@ -87,6 +75,4 @@ public class CalculatorModel {
                 ", vsaEmployer=" + vsaEmployer +
                 '}';
     }
-
-
 }
