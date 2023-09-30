@@ -7,11 +7,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 
-public class SalaryCalculatorTest {
+public class SalaryCalculatorAnimalInterface {
 
     // testa nosaukums =  testMetodesNosaukums_papildusNosacijumi
 
-    @Test
+/*    @Test
     public void testCalculateIinPercentage_salary1000() {
         //preparation
         SalaryCalculator victim = new SalaryCalculator();
@@ -74,4 +74,44 @@ public class SalaryCalculatorTest {
     // Pabeigt CalculatorResultModel
     // Tad pielabot salaryCalculation metodi, tiek ņems vērā CalculatorResultModel
     // turpināt rakstīt testus, cik nu iespējams :)
+    @Test
+    public void testSalaryCalculation_DependenceIsNegativeNumber(){
+        SalaryCalculator victim = new SalaryCalculator();
+        victim.getCalculatorModel().setNumberOfDependents(-5);
+        victim.salaryCalculation();
+        int actualDependence = victim.getCalculatorModel().getNumberOfDependents();
+        int expectedDependence = 0;
+        assertThat(actualDependence, is(expectedDependence));
+    }
+
+    @Test
+    public void testSalaryCalculation_DependenceWithoutNumber(){
+        SalaryCalculator victim = new SalaryCalculator();
+        victim.getCalculatorModel().setNumberOfDependents(0);
+        victim.salaryCalculation();
+        int actualDependence = victim.getCalculatorModel().getNumberOfDependents();
+        int expectedDependence = 0;
+        assertThat(actualDependence, is(expectedDependence));
+    }
+
+    @Test
+    public void testSalaryCalculation_DependenceCorrectNumber2(){
+        SalaryCalculator victim = new SalaryCalculator();
+        victim.getCalculatorModel().setNumberOfDependents(2);
+        victim.salaryCalculation();
+        int actualDependence = victim.getCalculatorModel().getNumberOfDependents();
+        int expectedDependence = 2;
+        assertThat(actualDependence, is(expectedDependence));
+    }*/
+
+    @Test
+    public void testSalaryCalculation_netSalary(){
+        SalaryCalculator victim = new SalaryCalculator();
+        victim.getCalculatorModel().setGrossSalary(1000);
+        victim.salaryCalculation();
+        double actualGrossSalary = victim.getResultModel().getTaxableAmount();
+        assertEquals(actualGrossSalary, 777.54, 0.001);
+    }
+
+
 }

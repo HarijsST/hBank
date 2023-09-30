@@ -76,7 +76,7 @@ public class SalaryCalculator {
 
     public void printInfoInput() {
         System.out.println("Bruto alga - " + calculatorModel.getGrossSalary() +
-                " Apgādājamo skaits - " + calculatorModel.getReliefForDependents() +
+                " Apgādājamo skaits - " + calculatorModel.getNumberOfDependents() +
                 " Nodokļu atvieglojumi - " + calculatorModel.getBenefits() +
                 " Precīzs neapliekamais minimums - " + calculatorModel.getTaxMinimum());
     }
