@@ -5,7 +5,7 @@ import animalPark.animals.Dog;
 import animalPark.animals.Lion;
 import animalPark.animals.Wolf;
 
-public class AnimalApp {
+public class KingdomApp {
     public static void main(String[] args) {
         Dog dog = new Dog();
         dog.makeNoise();
