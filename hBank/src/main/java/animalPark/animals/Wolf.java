@@ -1,9 +1,9 @@
 package animalPark.animals;
 
-import animalPark.Animal;
 import animalPark.AnimalInterface;
+import animalPark.Canine;
 
-public class Wolf extends Animal implements AnimalInterface {
+public class Wolf extends Canine implements AnimalInterface {
     @Override
     public void makeNoise() {
         System.out.println("Auuuuuuuu...");

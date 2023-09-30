@@ -29,5 +29,8 @@ public class AnimalApp {
 
         Feline muris = new Cat();
         muris.roam();
+
+        Canine suns = new Dog();
+        suns.roam();
     }
 }
