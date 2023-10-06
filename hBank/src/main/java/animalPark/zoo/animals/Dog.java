@@ -18,4 +18,9 @@ public final class Dog extends Canine implements Noisy {
     public void eat(){
         System.out.println("Eating delicious bones");
     }
+
+    @Override
+    public String toString() {
+        return "Dog";
+    }
 }

@@ -13,4 +13,9 @@ public final class Wolf extends Canine implements Noisy {
     public void see() {
         System.out.println("Wolf sees everything!");
     }
+
+    @Override
+    public String toString() {
+        return "Wolf";
+    }
 }

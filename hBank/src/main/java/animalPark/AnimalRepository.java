@@ -10,23 +10,32 @@ import java.util.Random;
 public class AnimalRepository {
 
     //Comment: CRUD - Create, Read, Update, Delete
-    private List<Animal> animalList = new ArrayList<>();
+    private final List<Animal> animalList = new ArrayList<>();
 
     //This is the constructor ->
-    public AnimalRepository() {
+
+    //1. Create 1 method that return all animals - animalList + add test :)
+    public List<Animal> AnimalRepository() {
         animalList.add(new Cat());
         animalList.add(new Cow());
         animalList.add(new Dog());
         animalList.add(new Lion());
         animalList.add(new Wolf());
+        return animalList;
         //Add objects of new clases to the animalList - directly here
     }
 
-    //1. Create 1 method that return all animals - animalList + add test :)
-
     //2. Create 1 method that returns first animal (with index 0) from animalList + add test
 
+    public Object getFirstAnimalFromList(){
+        return animalList.get(0);
+    }
+
     //3. Create 1 method that returns last animal (with last index) from animalList + add test
+
+    public Object getLastAnimalFromList(){
+        return animalList.get(animalList.size() - 1);
+    }
 
     //4. Add some more animal classes ( Hamster? Giraffe ? ) and then add to AnimalRepo constructor
 

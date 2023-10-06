@@ -61,7 +61,9 @@ public class KingdomApp {
             animal.see();
         }
         System.out.println(repository.getThreeAnimals());
-
+        System.out.println(repository.AnimalRepository());
+        System.out.println(repository.getFirstAnimalFromList());
+        System.out.println(repository.getLastAnimalFromList());
 
     }
 }

@@ -9,4 +9,9 @@ public final class Lion extends Feline implements Noisy {
     public void makeNoise() {
         System.out.println("Grrrrrrr...");
     }
+
+    @Override
+    public String toString() {
+        return "Lion";
+    }
 }
