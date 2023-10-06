@@ -1,6 +1,9 @@
-package animalPark;
+package animalPark.zoo.parents;
 
-public class Animal {
+public abstract class Animal {
+
+    public abstract void see();
+
     public void eat(){
         System.out.println("Ņam ņam ņam...");
     }

@@ -1,4 +1,4 @@
-package calculator;
+package done.calculator;
 
 public class CalculatorInterface {
     public static void main(String[] args) {

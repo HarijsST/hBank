@@ -1,13 +1,12 @@
 package animalPark;
 
-import animalPark.animals.Cat;
-import animalPark.animals.Dog;
-import animalPark.animals.Lion;
-import animalPark.animals.Wolf;
+import animalPark.zoo.animals.*;
+import animalPark.zoo.parents.Animal;
+import animalPark.zoo.parents.Canine;
+import animalPark.zoo.parents.Feline;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class KingdomApp {
     public static void main(String[] args) {
@@ -34,17 +33,35 @@ public class KingdomApp {
         Feline muris = new Cat();
         muris.roam();
 
+//        Feline feline = new Feline(); //Problem! Can't be created!
+
+        //class, interface, enum, abstract class
+
+//        Canine canine = new Canine();
+
         Canine suns = new Dog();
         suns.roam();
 
-        List <Cow> randoms = new ArrayList<>();
-        for(int i = 0; i < 5; i++){
-            randoms.add(new Cow());
+        List<Cow> cowsList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            cowsList.add(new Cow());
         }
 
-        for (Cow element : randoms) {
-            element.eat();
-            System.out.println(element + " ");
+        for (Cow cowForForLoop : cowsList) {
+            cowForForLoop.eat();
+            System.out.println(cowForForLoop + " ");
         }
+
+        AnimalRepository repository = new AnimalRepository();
+
+        System.out.println("AnimalInterface");
+        List<Animal> animals = repository.getThreeAnimals();
+        for (Animal animal : animals) {
+            animal.eat();
+            animal.see();
+        }
+        System.out.println(repository.getThreeAnimals());
+
+
     }
 }
