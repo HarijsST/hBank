@@ -5,6 +5,10 @@ import animalPark.animals.Dog;
 import animalPark.animals.Lion;
 import animalPark.animals.Wolf;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class KingdomApp {
     public static void main(String[] args) {
         Dog dog = new Dog();
@@ -32,5 +36,15 @@ public class KingdomApp {
 
         Canine suns = new Dog();
         suns.roam();
+
+        List <Cow> randoms = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
+            randoms.add(new Cow());
+        }
+
+        for (Cow element : randoms) {
+            element.eat();
+            System.out.println(element + " ");
+        }
     }
 }
