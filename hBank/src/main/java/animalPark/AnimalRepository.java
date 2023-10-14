@@ -21,6 +21,7 @@ public class AnimalRepository {
         animalList.add(new Dog());
         animalList.add(new Lion());
         animalList.add(new Wolf());
+        animalList.add(new Hamster());
         return animalList;
         //Add objects of new clases to the animalList - directly here
     }

@@ -1,6 +1,7 @@
 package animalPark.zoo.animals;
 
 import animalPark.Noisy;
+import animalPark.Scratchy;
 import animalPark.zoo.parents.Feline;
 
 public final class Cat extends Feline implements Noisy {
@@ -17,5 +18,10 @@ public final class Cat extends Feline implements Noisy {
     @Override
     public String toString() {
         return "Cat";
+    }
+
+    @Override
+    public void scratch() {
+        System.out.println("Cats scratch wallpaper");
     }
 }

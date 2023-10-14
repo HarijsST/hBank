@@ -65,5 +65,9 @@ public class KingdomApp {
         System.out.println(repository.getFirstAnimalFromList());
         System.out.println(repository.getLastAnimalFromList());
 
+        muris.scratch();
+        lion.scratch();
+        Hamster hamster = new Hamster();
+        hamster.makeNoise();
     }
 }
