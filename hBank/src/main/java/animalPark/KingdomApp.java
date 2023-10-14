@@ -1,9 +1,10 @@
 package animalPark;
 
-import animalPark.zoo.animals.*;
-import animalPark.zoo.parents.Animal;
-import animalPark.zoo.parents.Canine;
-import animalPark.zoo.parents.Feline;
+import animalPark.models.animals.*;
+import animalPark.models.parents.Animal;
+import animalPark.models.parents.Canine;
+import animalPark.models.parents.Feline;
+import animalPark.repository.AnimalRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +34,6 @@ public class KingdomApp {
         Feline muris = new Cat();
         muris.roam();
 
-//        Feline feline = new Feline(); //Problem! Can't be created!
-
-        //class, interface, enum, abstract class
-
-//        Canine canine = new Canine();
-
         Canine suns = new Dog();
         suns.roam();
 
@@ -61,7 +56,7 @@ public class KingdomApp {
             animal.see();
         }
         System.out.println(repository.getThreeAnimals());
-        System.out.println(repository.AnimalRepository());
+        System.out.println(repository.getAnimalList());
         System.out.println(repository.getFirstAnimalFromList());
         System.out.println(repository.getLastAnimalFromList());
 
@@ -69,5 +64,6 @@ public class KingdomApp {
         lion.scratch();
         Hamster hamster = new Hamster();
         hamster.makeNoise();
+        new Cat();
     }
 }

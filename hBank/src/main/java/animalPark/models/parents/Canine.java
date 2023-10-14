@@ -1,6 +1,4 @@
-package animalPark.zoo.parents;
-
-import animalPark.zoo.parents.Animal;
+package animalPark.models.parents;
 
 public abstract class Canine extends Animal {
     public void roam(){

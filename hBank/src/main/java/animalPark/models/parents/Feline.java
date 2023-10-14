@@ -1,7 +1,6 @@
-package animalPark.zoo.parents;
+package animalPark.models.parents;
 
 import animalPark.Scratchy;
-import animalPark.zoo.parents.Animal;
 
 public abstract class Feline extends Animal implements Scratchy{
     public void roam(){

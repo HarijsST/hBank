@@ -1,7 +1,7 @@
-package animalPark.zoo.animals;
+package animalPark.models.animals;
 
 import animalPark.Noisy;
-import animalPark.zoo.parents.Animal;
+import animalPark.models.parents.Animal;
 
 public class Hamster extends Animal implements Noisy {
 

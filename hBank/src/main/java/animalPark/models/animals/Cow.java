@@ -1,6 +1,6 @@
-package animalPark.zoo.animals;
+package animalPark.models.animals;
 
-import animalPark.zoo.parents.Animal;
+import animalPark.models.parents.Animal;
 import animalPark.Noisy;
 
 public final class Cow extends Animal implements Noisy {

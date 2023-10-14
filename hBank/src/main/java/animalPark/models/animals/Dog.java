@@ -1,7 +1,7 @@
-package animalPark.zoo.animals;
+package animalPark.models.animals;
 
 import animalPark.Noisy;
-import animalPark.zoo.parents.Canine;
+import animalPark.models.parents.Canine;
 
 public final class Dog extends Canine implements Noisy {
     @Override

@@ -1,8 +1,7 @@
-package animalPark.zoo.animals;
+package animalPark.models.animals;
 
 import animalPark.Noisy;
-import animalPark.Scratchy;
-import animalPark.zoo.parents.Feline;
+import animalPark.models.parents.Feline;
 
 public final class Cat extends Feline implements Noisy {
     @Override

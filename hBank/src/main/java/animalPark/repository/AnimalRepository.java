@@ -1,7 +1,7 @@
-package animalPark;
+package animalPark.repository;
 
-import animalPark.zoo.animals.*;
-import animalPark.zoo.parents.Animal;
+import animalPark.models.animals.*;
+import animalPark.models.parents.Animal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,41 +10,35 @@ import java.util.Random;
 public class AnimalRepository {
 
     //Comment: CRUD - Create, Read, Update, Delete
-    private final List<Animal> animalList = new ArrayList<>();
 
-    //This is the constructor ->
+    // Trīs konstruktora noteikumi
+    // 1. Nosaukums sakrīt ar klases nosaukumu
+    // 2. Nav atgriešanas tips (Animal, void, String utt)
+    // 3. Izsaucot to, mēs izmantojam "new" atslēgas vārdu
 
-    //1. Create 1 method that return all animals - animalList + add test :)
-    public List<Animal> AnimalRepository() {
+    public final List<Animal> animalList = new ArrayList<>();
+    public AnimalRepository(){
         animalList.add(new Cat());
         animalList.add(new Cow());
         animalList.add(new Dog());
         animalList.add(new Lion());
         animalList.add(new Wolf());
         animalList.add(new Hamster());
-        return animalList;
-        //Add objects of new clases to the animalList - directly here
     }
 
-    //2. Create 1 method that returns first animal (with index 0) from animalList + add test
+    public List<Animal> getAnimalList() {
+        return animalList;
+    }
 
-    public Object getFirstAnimalFromList(){
+    public Animal getFirstAnimalFromList(){
         return animalList.get(0);
     }
 
-    //3. Create 1 method that returns last animal (with last index) from animalList + add test
-
-    public Object getLastAnimalFromList(){
+    public Animal getLastAnimalFromList(){
         return animalList.get(animalList.size() - 1);
     }
 
-    //4. Add some more animal classes ( Hamster? Giraffe ? ) and then add to AnimalRepo constructor
-
-    //(Optional) 5. Create a new interface Scratchy (Skrāpēšana) and add it to FEW classes
-
     public List<Animal> getThreeAnimals() {
-        // is-a  Cat is Animal
-        // is-a  Dog is Animal
         List<Animal> animals = new ArrayList<>();
         Random randomGenerator = new Random();
         for (int i = 0; i < 3; i++) {
@@ -57,4 +51,14 @@ public class AnimalRepository {
         }
         return animals;
     }
+
+    //1. Izveidot visiem dzīvniekiem vārdu (jauns lauks - name)
+    //1.1 Nomaini toString, lai arī tur tiktu parādīts lauks name - līdzīgi kā StaticAdressExample
+
+    //2. Uzdevums - Izveidot jaunu konstruktoru, kas kā argumentu pieņemtu sarakstu List<Animal>
+    // un šis konstruktors uzstādīs padoto sarakstu, lai tas būtu dzīvnieku saraksts.
+
+    //3. Uzdevums - testi
+
+
 }
