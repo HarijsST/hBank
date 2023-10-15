@@ -37,4 +37,11 @@ public class PersonRepository {
     public String getFirstCarName(){
         return carNames.get(0);
     }
+    @Override
+    public String toString() {
+        return "PersonRepository{" +
+                "name='" + name + '\'' +
+                ", carNames=" + carNames +
+                '}';
+    }
 }

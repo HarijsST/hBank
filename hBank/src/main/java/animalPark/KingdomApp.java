@@ -65,5 +65,7 @@ public class KingdomApp {
         Hamster hamster = new Hamster();
         hamster.makeNoise();
         new Cat();
+        AnimalRepository repo2 = new AnimalRepository("Muris");
+        System.out.println(repo2.getAnimalName());
     }
 }

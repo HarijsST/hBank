@@ -8,7 +8,17 @@ import java.util.List;
 import java.util.Random;
 
 public class AnimalRepository {
+    String animalName;
 
+
+    public String getAnimalName() {
+        return animalName;
+    }
+
+    public AnimalRepository(String animalName) {
+        this.animalName = animalName;
+
+    }
     //Comment: CRUD - Create, Read, Update, Delete
 
     // Trīs konstruktora noteikumi
