@@ -39,6 +39,22 @@ public class AnimalRepository {
         return animalList.remove(index);
     }
 
+    //TODO Uztaisīt testu šai metodei
+    public String deleteAllAnimals() {
+        animalList.clear();
+        return "All animals deleted";
+    }
+
+    //TODO Uztaisīt testu šai metodei
+    private Animal addAnimal(Animal animal) {
+        boolean hasBeenAdded = animalList.add(animal);
+        if (hasBeenAdded) {
+            return animal;
+        } else {
+            return null;
+        }
+    }
+
     public Animal getFirstAnimalFromList() {
         return animalList.get(0);
     }
