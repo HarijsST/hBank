@@ -8,17 +8,6 @@ import java.util.List;
 import java.util.Random;
 
 public class AnimalRepository {
-    String animalName;
-
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public AnimalRepository(String animalName) {
-        this.animalName = animalName;
-
-    }
     //Comment: CRUD - Create, Read, Update, Delete
 
     // Trīs konstruktora noteikumi
@@ -27,13 +16,17 @@ public class AnimalRepository {
     // 3. Izsaucot to, mēs izmantojam "new" atslēgas vārdu
 
     public final List<Animal> animalList = new ArrayList<>();
+
+    public AnimalRepository(List<Animal> animalList){
+        this.animalList.addAll(animalList);
+    }
     public AnimalRepository(){
-        animalList.add(new Cat());
-        animalList.add(new Cow());
-        animalList.add(new Dog());
-        animalList.add(new Lion());
-        animalList.add(new Wolf());
-        animalList.add(new Hamster());
+        animalList.add(new Cat("Muris"));
+        animalList.add(new Cow("Gauja"));
+        animalList.add(new Dog("Duksis"));
+        animalList.add(new Lion("Karalis"));
+        animalList.add(new Wolf("Vova"));
+        animalList.add(new Hamster("Tomijs"));
     }
 
     public List<Animal> getAnimalList() {
@@ -54,9 +47,9 @@ public class AnimalRepository {
         for (int i = 0; i < 3; i++) {
             int caseInteger = randomGenerator.nextInt(3) + 1;
             switch (caseInteger) {
-                case 1 -> animals.add(new Cow());
-                case 2 -> animals.add(new Dog());
-                case 3 -> animals.add(new Cat());
+                case 1 -> animals.add(new Cow("Gauja"));
+                case 2 -> animals.add(new Dog("Duksis"));
+                case 3 -> animals.add(new Cat("Muris"));
             }
         }
         return animals;

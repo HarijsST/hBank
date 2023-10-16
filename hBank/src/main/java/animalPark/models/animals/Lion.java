@@ -12,12 +12,11 @@ public final class Lion extends Feline implements Noisy, Scratchy {
     }
 
     @Override
-    public String toString() {
-        return "Lion";
-    }
-
-    @Override
     public void scratch() {
         System.out.println("Lions scratch trees");
+    }
+
+    public Lion(String name){
+        super(name);
     }
 }

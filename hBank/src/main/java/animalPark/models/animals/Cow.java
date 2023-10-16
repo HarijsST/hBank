@@ -19,12 +19,11 @@ public final class Cow extends Animal implements Noisy {
     }
 
     @Override
-    public String toString() {
-        return "Cow";
-    }
-
-    @Override
     public void see() {
         System.out.println("Cow sees eveything!");
+    }
+
+    public Cow(String name){
+        super(name);
     }
 }

@@ -11,4 +11,8 @@ public abstract class Feline extends Animal implements Scratchy{
     public final void see(){
         System.out.println("Feline sees eveything!");
     }
+
+    protected Feline(String name){
+        super(name);
+    }
 }

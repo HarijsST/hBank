@@ -4,8 +4,6 @@ import animalPark.Noisy;
 import animalPark.models.parents.Feline;
 
 public final class Cat extends Feline implements Noisy {
-    private String name;
-
     @Override
     public void makeNoise() {
         System.out.println("Mjaaaau...");
@@ -17,12 +15,11 @@ public final class Cat extends Feline implements Noisy {
     }
 
     @Override
-    public String toString() {
-        return "Cat";
-    }
-
-    @Override
     public void scratch() {
         System.out.println("Cats scratch wallpaper");
+    }
+
+    public Cat(String name){
+        super(name);
     }
 }
