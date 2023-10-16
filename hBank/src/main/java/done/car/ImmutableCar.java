@@ -1,4 +1,4 @@
-package car;
+package done.car;
 
 public class ImmutableCar {
 

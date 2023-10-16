@@ -1,4 +1,4 @@
-package calculator;
+package done.calculator;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

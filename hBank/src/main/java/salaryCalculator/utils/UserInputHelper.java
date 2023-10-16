@@ -1,8 +1,8 @@
-package salaryCalculator;
+package salaryCalculator.utils;
 
 import java.util.Scanner;
 
-public class TestNumbers {
+public class UserInputHelper {
     static Scanner scanner = new Scanner(System.in);
     public static boolean isNumeric(String value) {
         if (value == null) {
