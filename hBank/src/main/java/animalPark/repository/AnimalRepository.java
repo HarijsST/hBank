@@ -34,6 +34,7 @@ public class AnimalRepository {
         return animalList;
     }
 
+    //TODO Uztaisīt testu šai metodei
     public Animal deleteAnimalByIndex(int index) {
         return animalList.remove(index);
     }
