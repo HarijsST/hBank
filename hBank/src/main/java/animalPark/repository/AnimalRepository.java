@@ -17,10 +17,11 @@ public class AnimalRepository {
 
     public final List<Animal> animalList = new ArrayList<>();
 
-    public AnimalRepository(List<Animal> animalList){
+    public AnimalRepository(List<Animal> animalList) {
         this.animalList.addAll(animalList);
     }
-    public AnimalRepository(){
+
+    public AnimalRepository() {
         animalList.add(new Cat("Muris"));
         animalList.add(new Cow("Gauja"));
         animalList.add(new Dog("Duksis"));
@@ -33,11 +34,15 @@ public class AnimalRepository {
         return animalList;
     }
 
-    public Animal getFirstAnimalFromList(){
+    public Animal deleteAnimalByIndex(int index) {
+        return animalList.remove(index);
+    }
+
+    public Animal getFirstAnimalFromList() {
         return animalList.get(0);
     }
 
-    public Animal getLastAnimalFromList(){
+    public Animal getLastAnimalFromList() {
         return animalList.get(animalList.size() - 1);
     }
 
@@ -54,14 +59,4 @@ public class AnimalRepository {
         }
         return animals;
     }
-
-    //1. Izveidot visiem dzīvniekiem vārdu (jauns lauks - name)
-    //1.1 Nomaini toString, lai arī tur tiktu parādīts lauks name - līdzīgi kā StaticAdressExample
-
-    //2. Uzdevums - Izveidot jaunu konstruktoru, kas kā argumentu pieņemtu sarakstu List<Animal>
-    // un šis konstruktors uzstādīs padoto sarakstu, lai tas būtu dzīvnieku saraksts.
-
-    //3. Uzdevums - testi
-
-
 }
