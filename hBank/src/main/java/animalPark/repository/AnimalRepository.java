@@ -15,7 +15,7 @@ public class AnimalRepository {
     // 2. Nav atgriešanas tips (Animal, void, String utt)
     // 3. Izsaucot to, mēs izmantojam "new" atslēgas vārdu
 
-    public final List<Animal> animalList = new ArrayList<>();
+    private final List<Animal> animalList = new ArrayList<>();
 
     public AnimalRepository(List<Animal> animalList) {
         this.animalList.addAll(animalList);
@@ -46,7 +46,7 @@ public class AnimalRepository {
     }
 
     //TODO Uztaisīt testu šai metodei
-    private Animal addAnimal(Animal animal) {
+    public Animal addAnimal(Animal animal) {
         boolean hasBeenAdded = animalList.add(animal);
         if (hasBeenAdded) {
             return animal;

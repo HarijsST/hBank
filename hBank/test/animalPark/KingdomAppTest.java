@@ -68,31 +68,42 @@ public class KingdomAppTest {
     }
     @Test
     public void testKingdomApp_deleteAllAnimals(){
-        List<Animal> animalList = new ArrayList<>();
-        AnimalRepository victim = new AnimalRepository(animalList);
-        final String al = victim.deleteAllAnimals();
-        assertEquals(al, "All animals deleted");
-        System.out.println("All animals deleted");
-        assertEquals(animalList.isEmpty(), true);
-        List<Animal> tt = victim.getAnimalList();
-        assertEquals(tt.isEmpty(), true);
-    }
-    @Test
-    public void testKingdomApp_deleteAnimalsByIndex(){
+        // setup
         List<Animal> animalList = new ArrayList<>();
         animalList.add(new Cat("Muris"));
         animalList.add(new Dog("Duksis"));
         animalList.add(new Lion("Karalis"));
         AnimalRepository victim = new AnimalRepository(animalList);
-        Animal removedAnimalIndex = victim.deleteAnimalByIndex(1);
-        assertEquals(removedAnimalIndex, 1);
+        // action
+        final String al = victim.deleteAllAnimals();
+        // assertions
+        assertEquals(al, "All animals deleted");
+        List<Animal> resultingAnimalList = victim.getAnimalList();
+        assertEquals(resultingAnimalList.isEmpty(), true);
     }
     @Test
-    public void testKingdomApp_hasBeenAdded() {
+    public void testKingdomApp_deleteAnimalsByIndex(){
+        //setup
         List<Animal> animalList = new ArrayList<>();
         animalList.add(new Cat("Muris"));
-        animalList.add(new Wolf("Vova"));
+        animalList.add(new Dog("Duksis"));
         animalList.add(new Lion("Karalis"));
-        assertEquals(animalList.size(), 3);
+        AnimalRepository victim = new AnimalRepository(animalList);
+        //action
+        Animal removedAnimal = victim.deleteAnimalByIndex(1);
+        // assertion
+        assertEquals(removedAnimal.getName(), "Duksis");
+    }
+    @Test
+    public void testKingdomApp_addAnimal() {
+        // setup
+        List<Animal> animalList = new ArrayList<>();
+        assertEquals(animalList.isEmpty(), true);
+        AnimalRepository victim = new AnimalRepository(animalList);
+        // action
+        Animal addAnimal = victim.addAnimal(new Cat("Mimī"));
+        assertEquals(addAnimal.getName(), "Mimī");
+        List<Animal> resultingAnimalList = victim.getAnimalList();
+        assertEquals(resultingAnimalList.isEmpty(), false);
     }
 }
