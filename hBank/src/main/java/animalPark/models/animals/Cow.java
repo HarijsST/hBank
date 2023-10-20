@@ -26,4 +26,8 @@ public final class Cow extends Animal implements Noisy {
     public Cow(String name){
         super(name);
     }
+
+    public Cow(int id, String name){
+        super(id, name);
+    }
 }

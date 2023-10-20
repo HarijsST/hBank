@@ -22,4 +22,8 @@ public final class Cat extends Feline implements Noisy {
     public Cat(String name){
         super(name);
     }
+
+    public Cat(int id, String name){
+        super(id, name);
+    }
 }

@@ -19,4 +19,8 @@ public final class Lion extends Feline implements Noisy, Scratchy {
     public Lion(String name){
         super(name);
     }
+
+    public Lion(int id, String name){
+        super(id, name);
+    }
 }

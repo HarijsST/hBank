@@ -17,4 +17,8 @@ public final class Wolf extends Canine implements Noisy {
     public Wolf(String name){
         super(name);
     }
+
+    public Wolf(int id, String name){
+        super(id, name);
+    }
 }

@@ -10,6 +10,9 @@ import java.util.Random;
 public class AnimalRepository {
     //Comment: CRUD - Create, Read, Update, Delete
 
+    //CTRL + ALT + O - sakārto importus
+    //CTRL + ALT + L - sakārto kodu
+
     // Trīs konstruktora noteikumi
     // 1. Nosaukums sakrīt ar klases nosaukumu
     // 2. Nav atgriešanas tips (Animal, void, String utt)
@@ -22,30 +25,37 @@ public class AnimalRepository {
     }
 
     public AnimalRepository() {
-        animalList.add(new Cat("Muris"));
-        animalList.add(new Cow("Gauja"));
-        animalList.add(new Dog("Duksis"));
-        animalList.add(new Lion("Karalis"));
-        animalList.add(new Wolf("Vova"));
-        animalList.add(new Hamster("Tomijs"));
+        animalList.add(new Cat(1001,"Muris"));
+        animalList.add(new Cow(1002, "Gauja"));
+        animalList.add(new Dog(1003, "Duksis"));
+        animalList.add(new Lion(1004, "Karalis"));
+        animalList.add(new Wolf(1005, "Vova"));
+        animalList.add(new Hamster(1006, "Tomijs"));
     }
 
+    //READ
     public List<Animal> getAnimalList() {
         return animalList;
     }
 
-    //TODO Uztaisīt testu šai metodei
+    //DELETE
     public Animal deleteAnimalByIndex(int index) {
         return animalList.remove(index);
     }
 
-    //TODO Uztaisīt testu šai metodei
+    //DELETE
+    //TODO Jāuzraksta testi - gan pozītīvai, gan negatīvais
+    public boolean deleteAnimalByObject(Animal animal) {
+        return animalList.remove(animal);
+    }
+
+    //DELETE
     public String deleteAllAnimals() {
         animalList.clear();
         return "All animals deleted";
     }
 
-    //TODO Uztaisīt testu šai metodei
+    //CREATE
     public Animal addAnimal(Animal animal) {
         boolean hasBeenAdded = animalList.add(animal);
         if (hasBeenAdded) {
@@ -55,14 +65,17 @@ public class AnimalRepository {
         }
     }
 
+    //READ
     public Animal getFirstAnimalFromList() {
         return animalList.get(0);
     }
 
+    //READ
     public Animal getLastAnimalFromList() {
         return animalList.get(animalList.size() - 1);
     }
 
+    //READ
     public List<Animal> getThreeAnimals() {
         List<Animal> animals = new ArrayList<>();
         Random randomGenerator = new Random();
@@ -75,5 +88,34 @@ public class AnimalRepository {
             }
         }
         return animals;
+    }
+
+    //TODO Uztaisi testu šim
+    public Animal updateAnimalName(int id, String newName) {
+        int foundObjectIndex = -1;
+        for (int i = 0; i < animalList.size(); i++) {
+            if (id == animalList.get(i).getId()) {
+                foundObjectIndex = i;
+            }
+        }
+        if (foundObjectIndex != -1) {
+            Animal foundAnimal = animalList.get(foundObjectIndex);
+            foundAnimal.setName(newName);
+            return foundAnimal;
+        } else {
+            return null;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        AnimalRepository animalRepository = new AnimalRepository();
+        Cat tuksis = new Cat(1111, "Tuksis");
+        animalRepository.addAnimal(tuksis);
+
+        animalRepository.updateAnimalName(1111, "Duksis");
+
+        Animal varbutDuksis = animalRepository.getLastAnimalFromList();
+        System.out.println(varbutDuksis);
     }
 }

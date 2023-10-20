@@ -3,7 +3,6 @@ package animalPark;
 import animalPark.models.animals.Cat;
 import animalPark.models.animals.Dog;
 import animalPark.models.animals.Lion;
-import animalPark.models.animals.Wolf;
 import animalPark.models.parents.Animal;
 import animalPark.repository.AnimalRepository;
 import org.junit.Test;
@@ -40,7 +39,6 @@ public class KingdomAppTest {
         assertEquals(animal.getName(), "Tomijs");
     }
 
-    //TODO testKindomApp_getAnimalList
     @Test
     public void testKindomApp_getAnimalList(){
         AnimalRepository victim = new AnimalRepository();
@@ -86,14 +84,34 @@ public class KingdomAppTest {
         //setup
         List<Animal> animalList = new ArrayList<>();
         animalList.add(new Cat("Muris"));
-        animalList.add(new Dog("Duksis"));
+        animalList.add(new Dog( 1111, "Duksis"));
         animalList.add(new Lion("Karalis"));
         AnimalRepository victim = new AnimalRepository(animalList);
         //action
         Animal removedAnimal = victim.deleteAnimalByIndex(1);
         // assertion
+        assertEquals(removedAnimal.getId(), 1111);
         assertEquals(removedAnimal.getName(), "Duksis");
+        // CTRL + ALT + V
+        List<Animal> returnedAnimalList = victim.getAnimalList();
+        assertEquals(returnedAnimalList.size(), 2);
     }
+
+    @Test
+    public void testKingdomApp_deleteAnimalsByIndex_NotExistingIndex(){
+        //Setup
+        AnimalRepository animalRepository = new AnimalRepository();
+        try{
+            //Action
+            animalRepository.deleteAnimalByIndex(999);
+            throw new AssertionError("Should have failed in delete!");
+        }
+        catch (IndexOutOfBoundsException e){
+            //Assertions
+            System.out.println("Got the exception we wanted");
+        }
+    }
+
     @Test
     public void testKingdomApp_addAnimal() {
         // setup
