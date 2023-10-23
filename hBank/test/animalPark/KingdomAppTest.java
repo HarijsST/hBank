@@ -98,6 +98,22 @@ public class KingdomAppTest {
     }
 
     @Test
+    public void testKingdomApp_deleteAnimalsByObject(){
+        //setup
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat("Muris"));
+        animalList.add(new Dog( 1111, "Duksis"));
+        animalList.add(new Lion("Karalis"));
+        AnimalRepository victim = new AnimalRepository(animalList);
+        //action
+        boolean removedAnimal = victim.deleteAnimalByObject(animalList.remove(1));
+        // assertion
+        assertTrue(removedAnimal);
+        List<Animal> returnedAnimalList = victim.getAnimalList();
+        assertEquals(returnedAnimalList.size(), 2);
+    }
+
+    @Test
     public void testKingdomApp_deleteAnimalsByIndex_NotExistingIndex(){
         //Setup
         AnimalRepository animalRepository = new AnimalRepository();
