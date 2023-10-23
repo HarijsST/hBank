@@ -114,6 +114,15 @@ public class KingdomAppTest {
     }
 
     @Test
+    public void testKingdomApp_updateAnimalName(){
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat(123,"Muris"));
+        AnimalRepository victim = new AnimalRepository(animalList);
+        Animal updateName = victim.updateAnimalName(123, "Mimī");
+        assertEquals(updateName.getName(), animalList.get(0).getName());
+    }
+
+    @Test
     public void testKingdomApp_deleteAnimalsByIndex_NotExistingIndex(){
         //Setup
         AnimalRepository animalRepository = new AnimalRepository();
