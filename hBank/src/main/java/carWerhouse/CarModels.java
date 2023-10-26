@@ -1,6 +1,6 @@
 package carWerhouse;
 
-public abstract class CarModels {
+public abstract class CarModels extends EngineModels{
     private String brand;
     private String model;
     private int year;
@@ -8,12 +8,14 @@ public abstract class CarModels {
     private String carCountry;
 
     public CarModels(String brand, String model, int year, String type, String carCountry) {
+        super();
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.type = type;
         this.carCountry = carCountry;
     }
+
 
     public String getBrand() {
         return brand;
