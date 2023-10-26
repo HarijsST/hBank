@@ -1,4 +1,4 @@
-package carwarehouse;
+package carwarehouse_example;
 
 public class CarWarehouseApp {
     public static void main(String[] args) {

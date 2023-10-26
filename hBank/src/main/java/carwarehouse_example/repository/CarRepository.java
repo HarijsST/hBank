@@ -1,10 +1,9 @@
-package carwarehouse.repository;
+package carwarehouse_example.repository;
 
-import carwarehouse.model.CarModel;
+import carwarehouse_example.model.CarModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CarRepository {
 

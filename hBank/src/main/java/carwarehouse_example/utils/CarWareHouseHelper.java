@@ -1,4 +1,4 @@
-package carwarehouse.utils;
+package carwarehouse_example.utils;
 
 import java.util.Scanner;
 
