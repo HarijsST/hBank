@@ -120,7 +120,7 @@ public class KingdomAppTest {
         AnimalRepository victim = new AnimalRepository(animalList);
         Animal updateName = victim.updateAnimalName(123, "Mimī");
         assertEquals(updateName.getName(), animalList.get(0).getName());
-        assertEquals("Mimī", "Mimī");
+        assertEquals(animalList.get(0).getName(), "Mimī");
     }
 
     @Test
