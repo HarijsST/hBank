@@ -1,4 +1,4 @@
-package carwarehouse.enums;
+package carwarehouse_example.enums;
 
 public enum Type {
     SUV,

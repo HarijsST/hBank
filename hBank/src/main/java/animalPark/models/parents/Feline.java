@@ -15,4 +15,8 @@ public abstract class Feline extends Animal implements Scratchy{
     protected Feline(String name){
         super(name);
     }
+
+    protected Feline(int id, String name){
+        super(id, name);
+    }
 }

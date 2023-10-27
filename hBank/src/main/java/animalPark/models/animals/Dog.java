@@ -22,4 +22,8 @@ public final class Dog extends Canine implements Noisy {
     public Dog(String name){
         super(name);
     }
+
+    public Dog(int id, String name){
+        super(id, name);
+    }
 }

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Car {
 
-    public static String brand = "Volvo";
+    public static String brand = "Cars";
 
     private static int carsCreated = 0;
 

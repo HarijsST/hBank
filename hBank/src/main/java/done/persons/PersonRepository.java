@@ -11,13 +11,13 @@ public class PersonRepository {
 
     public PersonRepository() {
         this.name = "Paul";
-        carNames.add("Volvo");
+        carNames.add("Cars");
         carNames.add("Žigulis");
     }
 
     public PersonRepository(String name) {
         this.name = name;
-        carNames.add("Volvo");
+        carNames.add("Cars");
         carNames.add("Žigulis");
     }
 

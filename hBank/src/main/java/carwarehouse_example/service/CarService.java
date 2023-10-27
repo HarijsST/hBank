@@ -1,7 +1,7 @@
-package carwarehouse.service;
+package carwarehouse_example.service;
 
-import carwarehouse.model.CarModel;
-import carwarehouse.repository.CarRepository;
+import carwarehouse_example.model.CarModel;
+import carwarehouse_example.repository.CarRepository;
 
 import java.util.List;
 

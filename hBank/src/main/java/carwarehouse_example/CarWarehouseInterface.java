@@ -1,7 +1,7 @@
-package carwarehouse;
+package carwarehouse_example;
 
-import carwarehouse.controller.CarController;
-import carwarehouse.utils.CarWareHouseHelper;
+import carwarehouse_example.controller.CarController;
+import carwarehouse_example.utils.CarWareHouseHelper;
 
 import java.util.Scanner;
 

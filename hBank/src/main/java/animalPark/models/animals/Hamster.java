@@ -17,4 +17,8 @@ public class Hamster extends Animal implements Noisy {
     public Hamster(String name){
         super(name);
     }
+
+    public Hamster(int id, String name){
+        super(id, name);
+    }
 }

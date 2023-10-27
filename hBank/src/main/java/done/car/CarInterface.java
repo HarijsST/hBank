@@ -67,8 +67,8 @@ public class CarInterface {
 
         Car mazda = new Car("Violet");
         Car bmw = new Car("Violet");
-        System.out.println("mazda == bmw " + (mazda == bmw)); // Atmiņā tie ir 2 dažādi objekti - false
-        System.out.println("(mazda.equals(bmw))) " + (mazda.equals(bmw))); // true
+        System.out.println("mazda == Bmw " + (mazda == bmw)); // Atmiņā tie ir 2 dažādi objekti - false
+        System.out.println("(mazda.equals(Bmw))) " + (mazda.equals(bmw))); // true
 
 
         ImmutableCar immutableCar = new ImmutableCar("Tesla");

@@ -1,6 +1,8 @@
 package animalPark;
 
 import animalPark.models.animals.Cat;
+import animalPark.models.animals.Dog;
+import animalPark.models.animals.Lion;
 import animalPark.models.parents.Animal;
 import animalPark.repository.AnimalRepository;
 import org.junit.Test;
@@ -37,7 +39,6 @@ public class KingdomAppTest {
         assertEquals(animal.getName(), "Tomijs");
     }
 
-    //TODO testKindomApp_getAnimalList
     @Test
     public void testKindomApp_getAnimalList(){
         AnimalRepository victim = new AnimalRepository();
@@ -62,5 +63,91 @@ public class KingdomAppTest {
         final List<Animal> allAnimal = victim.getAnimalList();
         assertEquals(allAnimal.size(), 1);
         assertEquals(allAnimal.get(0).getName(), "Muris");
+    }
+    @Test
+    public void testKingdomApp_deleteAllAnimals(){
+        // setup
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat("Muris"));
+        animalList.add(new Dog("Duksis"));
+        animalList.add(new Lion("Karalis"));
+        AnimalRepository victim = new AnimalRepository(animalList);
+        // action
+        final String al = victim.deleteAllAnimals();
+        // assertions
+        assertEquals(al, "All animals deleted");
+        List<Animal> resultingAnimalList = victim.getAnimalList();
+        assertEquals(resultingAnimalList.isEmpty(), true);
+    }
+    @Test
+    public void testKingdomApp_deleteAnimalsByIndex(){
+        //setup
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat("Muris"));
+        animalList.add(new Dog( 1111, "Duksis"));
+        animalList.add(new Lion("Karalis"));
+        AnimalRepository victim = new AnimalRepository(animalList);
+        //action
+        Animal removedAnimal = victim.deleteAnimalByIndex(1);
+        // assertion
+        assertEquals(removedAnimal.getId(), 1111);
+        assertEquals(removedAnimal.getName(), "Duksis");
+        // CTRL + ALT + V
+        List<Animal> returnedAnimalList = victim.getAnimalList();
+        assertEquals(returnedAnimalList.size(), 2);
+    }
+
+    @Test
+    public void testKingdomApp_deleteAnimalsByObject(){
+        //setup
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat("Muris"));
+        animalList.add(new Dog( 1111, "Duksis"));
+        animalList.add(new Lion("Karalis"));
+        AnimalRepository victim = new AnimalRepository(animalList);
+        //action
+        boolean removedAnimal = victim.deleteAnimalByObject(animalList.remove(1));
+        // assertion
+        assertTrue(removedAnimal);
+        List<Animal> returnedAnimalList = victim.getAnimalList();
+        assertEquals(returnedAnimalList.size(), 2);
+    }
+
+    @Test
+    public void testKingdomApp_updateAnimalName(){
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Cat(123,"Muris"));
+        AnimalRepository victim = new AnimalRepository(animalList);
+        Animal updateName = victim.updateAnimalName(123, "Mimī");
+        assertEquals(updateName.getName(), animalList.get(0).getName());
+        assertEquals(animalList.get(0).getName(), "Mimī");
+    }
+
+    @Test
+    public void testKingdomApp_deleteAnimalsByIndex_NotExistingIndex(){
+        //Setup
+        AnimalRepository animalRepository = new AnimalRepository();
+        try{
+            //Action
+            animalRepository.deleteAnimalByIndex(999);
+            throw new AssertionError("Should have failed in delete!");
+        }
+        catch (IndexOutOfBoundsException e){
+            //Assertions
+            System.out.println("Got the exception we wanted");
+        }
+    }
+
+    @Test
+    public void testKingdomApp_addAnimal() {
+        // setup
+        List<Animal> animalList = new ArrayList<>();
+        assertEquals(animalList.isEmpty(), true);
+        AnimalRepository victim = new AnimalRepository(animalList);
+        // action
+        Animal addAnimal = victim.addAnimal(new Cat("Mimī"));
+        assertEquals(addAnimal.getName(), "Mimī");
+        List<Animal> resultingAnimalList = victim.getAnimalList();
+        assertEquals(resultingAnimalList.isEmpty(), false);
     }
 }

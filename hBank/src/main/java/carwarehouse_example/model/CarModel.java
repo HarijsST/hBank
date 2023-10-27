@@ -1,4 +1,4 @@
-package carwarehouse.model;
+package carwarehouse_example.model;
 
 import java.util.Objects;
 

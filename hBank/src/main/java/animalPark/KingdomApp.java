@@ -14,5 +14,8 @@ public class KingdomApp {
         animalList.add(new Cat("Muris"));
         AnimalRepository repositor2 = new AnimalRepository(animalList);
         System.out.println(repositor2.getAnimalList());
+
+        Animal animal = repositor2.deleteAnimalByIndex(0);
+        System.out.println(repositor2.getAnimalList().size());
     }
 }

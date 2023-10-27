@@ -1,4 +1,4 @@
-package students;
+package done.students;
 
 public class StudentModel {
     String name;

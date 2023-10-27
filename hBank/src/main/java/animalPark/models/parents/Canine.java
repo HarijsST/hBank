@@ -8,4 +8,8 @@ public abstract class Canine extends Animal {
     protected Canine(String name){
         super(name);
     }
+
+    protected Canine(int id, String name){
+        super(id, name);
+    }
 }
