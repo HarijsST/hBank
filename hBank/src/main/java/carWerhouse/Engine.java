@@ -1,5 +1,6 @@
 package carWerhouse;
 
 public interface Engine{
-    public abstract String insertEngine();
+    void start();
+    boolean isStarted();
 }

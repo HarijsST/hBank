@@ -1,65 +1,72 @@
 package carWerhouse;
 
-public abstract class CarModels extends EngineModels{
-    private String brand;
+public abstract class CarModel {
+    private final String brand;
     private String model;
     private int year;
     private String type;
     private String carCountry;
 
-    public CarModels(String brand, String model, int year, String type, String carCountry) {
-        super();
+    protected Engine engine;
+
+    public Engine getEngine() {
+        return engine;
+    }
+    public CarModel(String brand, String model, int year, String type, String carCountry) {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.type = type;
         this.carCountry = carCountry;
-    }
-
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
+        insertEngine();
     }
 
     public void setModel(String model) {
         this.model = model;
     }
 
-    public int getYear() {
-        return year;
-    }
-
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public void setType(String type) {
         this.type = type;
     }
 
+    public void setCarCountry(String carCountry) {
+        this.carCountry = carCountry;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+
+    public int getYear() {
+        return year;
+    }
+
+
+    public String getType() {
+        return type;
+    }
+
+
     public String getCarCountry() {
         return carCountry;
     }
 
-    public void setCarCountry(String carsCountry) {
-        this.carCountry = carCountry;
-    }
-
     @Override
     public String toString() {
-        return "CarModels{" +
+        return "CarModel{" +
                 "brand='" + getBrand() + '\'' +
                 ", model='" + getModel() + '\'' +
                 ", year=" + getYear() +
@@ -69,4 +76,6 @@ public abstract class CarModels extends EngineModels{
     }
 
     public abstract void specification();
+    public abstract void insertEngine();
+
 }

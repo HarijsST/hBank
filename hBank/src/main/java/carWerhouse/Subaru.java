@@ -1,6 +1,6 @@
 package carWerhouse;
 
-public class Subaru extends CarModels implements Engine{
+public class Subaru extends CarModel {
     public Subaru(String brand, String model, int year, String type, String carCountry) {
         super(brand, model, year, type, carCountry);
     }
@@ -8,12 +8,12 @@ public class Subaru extends CarModels implements Engine{
     @Override
     public void specification() {
         System.out.println(getBrand() + " " + getModel() + " " + getYear() + " " + getType() + " " + getCarCountry());
-        System.out.println("Automašīna aprīkota ar " + insertEngine()+ " motoru");
+        System.out.println("Automašīna aprīkota ar " + engine.toString() + " motoru");
     }
 
-
     @Override
-    public String insertEngine() {
-        return getSubaruEngine();
+    public void insertEngine() {
+        this.engine = new SubaruEngine();
+
     }
 }
