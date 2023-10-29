@@ -1,10 +1,13 @@
 package carWerhouse;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class CarWerhouseApp {
-    public static void main(String[] args) {
-        CarModel car = new Bmw("BMW", "X6", 2023, "SUV", "Germany");
+    public static void main(String[] args) throws IOException {
+        CarsRepository cr = new CarsRepository();
+
+/*        CarModel car = new Bmw("BMW", "X6", 2023, "SUV", "Germany");
         CarModel car2 = new Subaru("Subaru", "XV", 2020, "SUV", "Japan");
         CarModel car3 = new Volvo("Volvo", "XC60", 2024, "SUV", "Sweden");
 
@@ -20,12 +23,21 @@ public class CarWerhouseApp {
         bmw.specification();
         bmw.getEngine().start();
         System.out.println(bmw.getEngine().isStarted());
-        CarsRepository cr = new CarsRepository();
         System.out.println(cr.getCarList().get(cr.getCarList().size()-1));
         System.out.println(cr.getCarByIndex(1));
         System.out.println(cr.getCarByIndex(5));
         System.out.println(cr.addNewCar(bmw));
         System.out.println(cr.updateCarModel(1, car));
-        System.out.println(cr.getCarList());
+        System.out.println(cr.deleteCarByIndex(1));
+        System.out.println(cr.getCarList());*/
+
+        System.out.println(cr.startEngine(2));
+        CarService cs = new CarService();
+        System.out.println("------------------------------------------------------------------");
+        System.out.printf("%10s %10s %10s %10s %10s %10s", "BRAND", "MODEL", "YEAR", "TYPE", "COUNTRY", "ENGINE");
+        System.out.println();
+        System.out.println("------------------------------------------------------------------");
+        cs.printAllCars("%10s %0s %10s %10s %10s %10s", new CarsRepository());
+        cr.listToFile();
     }
 }

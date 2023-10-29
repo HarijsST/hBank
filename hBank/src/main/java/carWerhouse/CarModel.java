@@ -6,12 +6,7 @@ public abstract class CarModel {
     private int year;
     private String type;
     private String carCountry;
-
     protected Engine engine;
-
-    public Engine getEngine() {
-        return engine;
-    }
     public CarModel(String brand, String model, int year, String type, String carCountry) {
         this.brand = brand;
         this.model = model;
@@ -63,6 +58,9 @@ public abstract class CarModel {
     public String getCarCountry() {
         return carCountry;
     }
+    public Engine getEngine() {
+        return engine;
+    }
 
     @Override
     public String toString() {
@@ -71,11 +69,16 @@ public abstract class CarModel {
                 ", model='" + getModel() + '\'' +
                 ", year=" + getYear() +
                 ", type='" + getType() + '\'' +
-                ", carsCountry='" + getCarCountry() + '\'' +
+                ", carCountry='" + getCarCountry() + '\'' +
+                ", engine=" + getEngine() +
                 '}';
     }
 
     public abstract void specification();
     public abstract void insertEngine();
 
+    public boolean start(){
+        getEngine().start();
+        return true;
+    }
 }

@@ -6,15 +6,12 @@ public class Bmw extends CarModel {
         super(brand, model, year, type, carCountry);
     }
 
-
-
     @Override
     public void specification() {
         System.out.println(getBrand() + " " + getModel() + " " + getYear() + " " + getType() + " " + getCarCountry());
-        System.out.println("Automašīna aprīkota ar " + engine.toString() + " motoru");
+        System.out.println("Automašīna aprīkota ar " + getEngine() + " motoru");
     }
     public void insertEngine(){
         this.engine = new BmwEngine();
     }
-
 }
