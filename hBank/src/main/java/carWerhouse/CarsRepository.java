@@ -1,5 +1,10 @@
 package carWerhouse;
 
+import carWerhouse.models.cars.Bmw;
+import carWerhouse.models.cars.CarModel;
+import carWerhouse.models.cars.Subaru;
+import carWerhouse.models.cars.Volvo;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,9 +19,10 @@ public class CarsRepository  {
     }
 
     public String listToFile() throws IOException {
-        FileWriter fileWriter = new FileWriter("D:/file.txt");
+        FileWriter fileWriter = new FileWriter("./file.txt");
         for (CarModel cars : getCarList()) {
-            fileWriter.write(cars.getBrand() + " " + cars.getModel() + " " + cars.getYear() + " " + cars.getType() + " " + cars.getCarCountry() + " " + cars.getEngine() + System.lineSeparator());
+            fileWriter.write(cars.getBrand() + " " + cars.getModel() + " " + cars.getYear() +
+                    " " + cars.getType() + " " + cars.getCarCountry() + " " + cars.getEngine() + System.lineSeparator());
         }
         fileWriter.close();
         return "Successfuly complate";
@@ -53,9 +59,7 @@ public class CarsRepository  {
     }
 
     public CarModel deleteCarByIndex(int index){
-        CarModel car = getCarByIndex(index);
-        carList.remove(index);
-        return car;
+        return carList.remove(index);
     }
     public String startEngine(int index){
         getCarByIndex(index).start();

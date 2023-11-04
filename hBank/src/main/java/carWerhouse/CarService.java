@@ -1,9 +1,11 @@
 package carWerhouse;
 
+import carWerhouse.models.cars.CarModel;
+
 public class CarService {
-    public void printAllCars(String s, CarsRepository repo){
-        for(CarModel cars : repo.getCarList()){
-            System.out.format(cars.getBrand() + " " + cars.getModel() + " " + cars.getYear() + " " + cars.getType() + " " + cars.getCarCountry() + " " + cars.getEngine());
+    public void printAllCars(String format, CarsRepository repo){
+        for(CarModel car : repo.getCarList()){
+            System.out.printf(format, car.getBrand(), car.getModel(), car.getYear(), car.getType(), car.getCarCountry(), car.getEngine());
             System.out.println();
         }
     }

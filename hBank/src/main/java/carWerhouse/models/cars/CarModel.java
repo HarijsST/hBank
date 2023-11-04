@@ -1,4 +1,6 @@
-package carWerhouse;
+package carWerhouse.models.cars;
+
+import carWerhouse.models.engine.Engine;
 
 public abstract class CarModel {
     private final String brand;
@@ -64,14 +66,12 @@ public abstract class CarModel {
 
     @Override
     public String toString() {
-        return "CarModel{" +
-                "brand='" + getBrand() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", year=" + getYear() +
-                ", type='" + getType() + '\'' +
-                ", carCountry='" + getCarCountry() + '\'' +
-                ", engine=" + getEngine() +
-                '}';
+        return getBrand() + ' ' +
+                getModel() + ' ' +
+                getYear() + ' ' +
+                getType() + ' ' +
+                getCarCountry() + ' ' +
+                getEngine();
     }
 
     public abstract void specification();

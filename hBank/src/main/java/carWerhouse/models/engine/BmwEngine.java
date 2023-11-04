@@ -1,4 +1,4 @@
-package carWerhouse;
+package carWerhouse.models.engine;
 
 public class BmwEngine extends AbstractEngine{
     private String powerFullBmwEngine = "4.4l V8 333 Zs";
@@ -9,9 +9,7 @@ public class BmwEngine extends AbstractEngine{
 
     @Override
     public String toString() {
-        return "BmwEngine{" +
-                "powerFullBmwEngine='" + getPowerFullBmwEngine() + '\'' +
-                '}';
+        return getPowerFullBmwEngine();
     }
 
     @Override

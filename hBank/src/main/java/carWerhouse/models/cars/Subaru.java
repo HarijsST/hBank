@@ -1,7 +1,9 @@
-package carWerhouse;
+package carWerhouse.models.cars;
 
-public class Volvo extends CarModel {
-    public Volvo(String brand, String model, int year, String type, String carCountry) {
+import carWerhouse.models.engine.SubaruEngine;
+
+public class Subaru extends CarModel {
+    public Subaru(String brand, String model, int year, String type, String carCountry) {
         super(brand, model, year, type, carCountry);
     }
 
@@ -13,6 +15,7 @@ public class Volvo extends CarModel {
 
     @Override
     public void insertEngine() {
-        this.engine = new VolvoEngine();
+        this.engine = new SubaruEngine();
+
     }
 }

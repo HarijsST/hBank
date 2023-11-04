@@ -1,4 +1,6 @@
-package carWerhouse;
+package carWerhouse.models.cars;
+
+import carWerhouse.models.engine.BmwEngine;
 
 public class Bmw extends CarModel {
 

@@ -1,4 +1,4 @@
-package carWerhouse;
+package carWerhouse.models.engine;
 
 public class VolvoEngine extends AbstractEngine{
     String avgVolvoEngine = "2.0l 250 Zs";
@@ -9,9 +9,7 @@ public class VolvoEngine extends AbstractEngine{
 
     @Override
     public String toString() {
-        return "VolvoEngine{" +
-                "avgVolvoEngine='" + getAvgVolvoEngine() + '\'' +
-                '}';
+        return getAvgVolvoEngine();
     }
 
     @Override

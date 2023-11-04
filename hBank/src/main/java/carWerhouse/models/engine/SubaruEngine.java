@@ -1,4 +1,4 @@
-package carWerhouse;
+package carWerhouse.models.engine;
 
 public class SubaruEngine extends AbstractEngine{
     String weakSubaruEngine = "1,6l 114 Zs";
@@ -9,9 +9,7 @@ public class SubaruEngine extends AbstractEngine{
 
     @Override
     public String toString() {
-        return "SubaruEngine{" +
-                "weakSubaruEngine='" + getWeakSubaruEngine() + '\'' +
-                '}';
+        return getWeakSubaruEngine();
     }
 
     @Override
