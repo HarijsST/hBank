@@ -1,7 +1,12 @@
 package carWerhouse;
 
+import carWerhouse.models.cars.CarModel;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 
 public class CarWerhouseApp {
     public static void main(String[] args) throws IOException {
@@ -38,5 +43,8 @@ public class CarWerhouseApp {
         System.out.printf(format, "BRAND", "MODEL", "YEAR", "TYPE", "COUNTRY", "ENGINE" + "\n");
         System.out.println("---------------------------------------------------------------------------");
         carService.printAllCars(format, carsRepository);
+        //carsRepository.listToFile();
+        List<CarModel> carModelsFromFile  = carsRepository.fileToList();
+        System.out.println(carModelsFromFile);
     }
 }

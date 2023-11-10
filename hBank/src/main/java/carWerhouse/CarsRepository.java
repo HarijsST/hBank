@@ -5,10 +5,12 @@ import carWerhouse.models.cars.CarModel;
 import carWerhouse.models.cars.Subaru;
 import carWerhouse.models.cars.Volvo;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class CarsRepository  {
     private final List<CarModel> carList = new ArrayList<>();
@@ -18,14 +20,34 @@ public class CarsRepository  {
         carList.add(new Volvo("Volvo", "XC60", 2024, "SUV", "Sweden"));
     }
 
-    public String listToFile() throws IOException {
-        FileWriter fileWriter = new FileWriter("./file.txt");
+    public void listToFile() throws IOException {
+        Path path = Path.of("hBank/src/main/resources/file.txt");
+        FileWriter fileWriter = new FileWriter(path.toString());
         for (CarModel cars : getCarList()) {
             fileWriter.write(cars.getBrand() + " " + cars.getModel() + " " + cars.getYear() +
                     " " + cars.getType() + " " + cars.getCarCountry() + " " + cars.getEngine() + System.lineSeparator());
         }
         fileWriter.close();
-        return "Successfuly complate";
+    }
+
+    public List<CarModel> fileToList() throws FileNotFoundException {
+        File file = new File("hBank/src/main/resources/file.txt");
+        Scanner scanner = new Scanner(file);
+        List<CarModel> secondCarList = new ArrayList<>();
+        while (scanner.hasNextLine()){
+            String[] carDetails = scanner.nextLine().split(" ");
+            CarModel carModel = switch (carDetails[0]) {
+                case "BMW" ->
+                        new Bmw(carDetails[0], carDetails[1], Integer.parseInt(carDetails[2]), carDetails[3], carDetails[4]);
+                case "Subaru" ->
+                        new Subaru(carDetails[0], carDetails[1], Integer.parseInt(carDetails[2]), carDetails[3], carDetails[4]);
+                case "Volvo" ->
+                        new Volvo(carDetails[0], carDetails[1], Integer.parseInt(carDetails[2]), carDetails[3], carDetails[4]);
+                default -> null;
+            };
+            secondCarList.add(carModel);
+        }
+        return secondCarList;
     }
 
     public List<CarModel> getCarList() {
