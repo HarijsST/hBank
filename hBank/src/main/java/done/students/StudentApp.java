@@ -2,25 +2,27 @@ package done.students;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class StudentApp {
     public static void main(String[] args) {
-        StudentModel students = new StudentModel("Jānis", "Kļava", 18, "Biology");
-        StudentModel students2 = new StudentModel("Mārtiņs", "Balodis", 21, "Math");
-        StudentModel students3 = new StudentModel("Inese", "Saule", 31, "Medic");
-        StudentModel students4 = new StudentModel();
-        StudentModel students5 = new StudentModel();
+        List<Double> studentRatingList = List.of(3.5, 2.1, 1.3);
+        List<Double> abc = new CopyOnWriteArrayList<>();
+        StudentModel studentModel = new StudentModel("Janis", "Bērziņš", studentRatingList);
 
-        List<StudentModel> studentList = new ArrayList<>();
-        studentList.add(students);
-        studentList.add(students2);
-        studentList.add(students3);
-        studentList.add(students4);
-        studentList.add(students5);
+        List<Double> studentRatingList2 = new ArrayList<>();
+        studentRatingList2.add(1.3);
+        studentRatingList2.add(3.1);
+        studentRatingList2.add(5.0);
+        StudentModel studentModel2 = new StudentModel("Laila", "Sniedziņa", studentRatingList2);
 
 
-        for(StudentModel sm : studentList){
-            System.out.println(sm.getName() + " " + sm.getSurname() + " " + sm.getAge() + " " + sm.getSpecialty());
+        List<StudentModel> students = new ArrayList<>();
+        students.add(studentModel);
+        students.add(studentModel2);
+        for(StudentModel studentModel1 : students){
+            System.out.println(studentModel1.getName() + " " + studentModel1.getSurname());
+            System.out.println(studentModel1.avgRating());
         }
     }
 }

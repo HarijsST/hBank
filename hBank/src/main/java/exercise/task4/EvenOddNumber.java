@@ -5,6 +5,6 @@ public class EvenOddNumber {
     public String getNumberType(int number) {
         if(number % 2 == 0){
             return "Even";
-        }else return "Odd";
+        }else {return "Odd";}
     }
 }

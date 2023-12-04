@@ -1,10 +1,19 @@
 package done.students;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudentModel {
-    String name;
-    String surname;
-    int age;
-    String specialty;
+    private String name;
+    private String surname;
+
+    private List<Double> studentRatingList;
+
+    public StudentModel(String name, String surname, List<Double> studentRatingList) {
+        this.name = name;
+        this.surname = surname;
+        this.studentRatingList = studentRatingList;
+    }
 
     public String getName() {
         return name;
@@ -14,25 +23,24 @@ public class StudentModel {
         return surname;
     }
 
-    public int getAge() {
-        return age;
+    public List<Double> getStudentRatingList() {
+        return studentRatingList;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    @Override
+    public String toString() {
+        return "StudentModel{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", studentRatingList=" + studentRatingList +
+                '}';
     }
 
-    StudentModel(String name, String surname, int age, String specialty){
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.specialty = specialty;
-    }
-
-    StudentModel(){
-        this.name = "Vārds";
-        this.surname = "Uzvārds";
-        this.age = -1;
-        this.specialty = "Specialitāte";
+    public double avgRating(){
+        double counter = 0;
+        for(int i = 0; i < getStudentRatingList().size(); i++){
+            counter = counter + getStudentRatingList().get(i);
+        }
+        return counter  / getStudentRatingList().size();
     }
 }

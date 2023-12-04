@@ -16,21 +16,11 @@ public class ArrayUtils {
     }
 
     public int[] reverse(int[] sourceArray) {
-        int[] reverseArray = new int[sourceArray.length];
-        for (int i = sourceArray.length -1; i >= 0; i--) {
-            int reverseIndex = (sourceArray.length - 1) - i;
-            reverseArray[reverseIndex] = sourceArray[i];
+        int[] reverseArray = {};
+        for (int i = sourceArray.length; i >= 0; i--) {
+            reverseArray[i] = sourceArray[i];
         }
         return reverseArray;
-    }
-
-    public int[] reverse2(int[] sourceArray) {
-        int[] newArray = new int[sourceArray.length];
-        for (int i = 0; i < sourceArray.length; i++) {
-            int reverseIndex = (sourceArray.length - 1) - i;
-            newArray[i] = sourceArray[reverseIndex];
-        }
-        return newArray;
     }
 }
 
