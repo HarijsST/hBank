@@ -15,6 +15,10 @@ public class StudentModel {
         this.studentRatingList = studentRatingList;
     }
 
+    public StudentModel(){
+
+    }
+
     public String getName() {
         return name;
     }

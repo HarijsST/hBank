@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MapTest {
-/*
+
     private final static Map<String, Integer> codesMap = Map.of("LV", 371,
-                                                                "LT", 380);
+            "LT", 380);
 
     public static void main(String[] args) {
         //Atslega (key), vertiba (value)
@@ -62,7 +62,7 @@ public class MapTest {
         Map<StudentModel, List<Double>> studentMarkWithModelAsKey = new HashMap<>();
         studentMarkWithModelAsKey.put(new StudentModel(), List.of(3.5, 5.6, 5.4));
         StudentModel key = new StudentModel();
-        studentMarkWithModelAsKey.put(key, key.getGrades());
+        studentMarkWithModelAsKey.put(key, key.getStudentRatingList());
         System.out.println("\nstudentMarkWithModelAsKey:");
         System.out.println(studentMarkWithModelAsKey);
 
@@ -86,5 +86,4 @@ public class MapTest {
         System.out.println(codesMap.get("LV"));
     }
 
- */
 }

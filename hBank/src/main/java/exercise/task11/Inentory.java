@@ -23,5 +23,9 @@ public interface Inentory {
 
     Product getProductWithHighestPrice();
 
+    Product getProductWithBiggestQuantity();
+
+    Product getProductWithLeastQuantity();
+
     void removeProduct(String productName);
 }

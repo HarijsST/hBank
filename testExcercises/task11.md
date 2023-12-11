@@ -135,7 +135,7 @@ public class SimpleInventory implements Inventory {
    * getProductWithHighestPrice() - atgriež dargāko produktu;
    * removeProduct(productName) - izņem produktu no noliktavas
 
-**MyBookShelf klases pārbaude**
+**SimpleInventory klases pārbaude**
 
 Pa soļiem:
 
