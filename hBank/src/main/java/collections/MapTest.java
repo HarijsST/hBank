@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MapTest {
-
+/*
     private final static Map<String, Integer> codesMap = Map.of("LV", 371,
                                                                 "LT", 380);
 
@@ -85,4 +85,6 @@ public class MapTest {
         System.out.println(codesMap.get("LV"));
         System.out.println(codesMap.get("LV"));
     }
+
+ */
 }
