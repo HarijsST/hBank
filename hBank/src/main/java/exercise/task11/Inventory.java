@@ -2,7 +2,7 @@ package exercise.task11;
 
 import java.util.List;
 
-public interface Inentory {
+public interface Inventory {
     void addProduct(Product product);
 
     Product getProduct(String productName);

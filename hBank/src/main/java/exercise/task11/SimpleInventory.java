@@ -2,7 +2,7 @@ package exercise.task11;
 
 import java.util.*;
 
-public class SimpleInventory implements Inentory{
+public class SimpleInventory implements Inventory{
     private Map<String, Product> products;
 
     public SimpleInventory() {
