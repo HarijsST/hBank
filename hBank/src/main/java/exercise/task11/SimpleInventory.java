@@ -36,55 +36,49 @@ public class SimpleInventory implements Inentory{
 
     @Override
     public void updateProductQuantity(String productName, int newQuantity) {
-        for(Product product : products.values()){
-            if(product.getName().equals(productName)){
-                product.setQuantity(newQuantity);
-            }
-        }
+        products.get(productName).setQuantity(newQuantity);
     }
 
     @Override
     public double getProductPrice(String productName) {
-        double productPrice = 0.00;
-        for(Product product : products.values()){
-            if(product.getName().equals(productName)){
-                productPrice = product.getPrice();
-            }
-        }
-        return productPrice;
+        return products.get(productName).getPrice();
     }
 
     @Override
     public void updateProductPrice(String productName, double newPrice) {
-        for(Product product : products.values()){
-            if(product.getName().equals(productName)){
-                product.setPrice(newPrice);
-            }
-        }
+        products.get(productName).setPrice(newPrice);
     }
 
     @Override
     public Product getProductWithLowestPrice() {
-        double lowestPrice = products.get(0).getPrice();
-        for(Product product : products.values()){
-            if(product.getPrice() < lowestPrice){
-                return product;
-            }
-        }
-        return null;
+        List<Product> productValues = new ArrayList<>(products.values());
+        productValues.sort(Comparator.comparing(Product::getPrice));
+        return productValues.get(0);
     }
 
     @Override
     public Product getProductWithHighestPrice() {
-        return null;
+        List<Product> productValues = new ArrayList<>(products.values());
+        productValues.sort(Comparator.comparing(Product::getPrice));
+        return productValues.get(productValues.size() - 1);
+    }
+
+    @Override
+    public Product getProductWithBiggestQuantity() {
+        List<Product> productValues = new ArrayList<>(products.values());
+        productValues.sort(Comparator.comparing(Product::getQuantity));
+        return productValues.get(productValues.size() - 1);
+    }
+
+    @Override
+    public Product getProductWithLeastQuantity() {
+        List<Product> productValues = new ArrayList<>(products.values());
+        productValues.sort(Comparator.comparing(Product::getQuantity));
+        return productValues.get(0);
     }
 
     @Override
     public void removeProduct(String productName) {
-        for(Product product : products.values()){
-            if(product.getName().equals(productName)){
-                products.remove(product.getName(), product);
-            }
-        }
+        products.remove(productName);
     }
 }
