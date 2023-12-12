@@ -1,6 +1,8 @@
-package carWerhouse;
+package carWerhouse.models.cars;
 
-public class Volvo extends CarModels implements Engine{
+import carWerhouse.models.engine.VolvoEngine;
+
+public class Volvo extends CarModel {
     public Volvo(String brand, String model, int year, String type, String carCountry) {
         super(brand, model, year, type, carCountry);
     }
@@ -8,11 +10,11 @@ public class Volvo extends CarModels implements Engine{
     @Override
     public void specification() {
         System.out.println(getBrand() + " " + getModel() + " " + getYear() + " " + getType() + " " + getCarCountry());
-        System.out.println("Automašīna aprīkota ar " + insertEngine()+ " motoru");
+        System.out.println("Automašīna aprīkota ar " + engine.toString() + " motoru");
     }
 
     @Override
-    public String insertEngine() {
-        return getVolvoEngine();
+    public void insertEngine() {
+        this.engine = new VolvoEngine();
     }
 }

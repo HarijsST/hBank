@@ -48,7 +48,7 @@ public class CarInterface {
         System.out.println("----------    Equals un ==   -----------");
         int number1 = 1;
         int number2 = 2;
-        System.out.println("Numbers are == " + (number1 == number2));
+        System.out.println("PostiveNegativeNumberApp are == " + (number1 == number2));
 
         String name1 = "age";
         String name2 = new String("age");
