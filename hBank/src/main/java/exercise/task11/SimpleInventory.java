@@ -51,28 +51,28 @@ public class SimpleInventory implements Inventory{
 
     @Override
     public Product getProductWithLowestPrice() {
-        List<Product> productValues = new ArrayList<>(products.values());
+        List<Product> productValues = getAllProducts();
         productValues.sort(Comparator.comparing(Product::getPrice));
         return productValues.get(0);
     }
 
     @Override
     public Product getProductWithHighestPrice() {
-        List<Product> productValues = new ArrayList<>(products.values());
+        List<Product> productValues = getAllProducts();
         productValues.sort(Comparator.comparing(Product::getPrice));
         return productValues.get(productValues.size() - 1);
     }
 
     @Override
     public Product getProductWithBiggestQuantity() {
-        List<Product> productValues = new ArrayList<>(products.values());
+        List<Product> productValues = getAllProducts();
         productValues.sort(Comparator.comparing(Product::getQuantity));
         return productValues.get(productValues.size() - 1);
     }
 
     @Override
     public Product getProductWithLeastQuantity() {
-        List<Product> productValues = new ArrayList<>(products.values());
+        List<Product> productValues = getAllProducts();
         productValues.sort(Comparator.comparing(Product::getQuantity));
         return productValues.get(0);
     }

@@ -38,7 +38,7 @@ public class GramatuTesti {
         List<String> newAuthor = new ArrayList<>();
         newAuthor.add("George Orwell");
         newAuthor.add("Jane Austen");
-        bookList.getBooksByMultipleAuthors(newAuthor);
+        System.out.println(bookList.getBooksByMultipleAuthors(newAuthor));
 
         /*System.out.println(bookShelf.findBooksByAuthor("George Orwell"));
         System.out.println(bookShelf.findBookByTitle("Animal Farm"));
