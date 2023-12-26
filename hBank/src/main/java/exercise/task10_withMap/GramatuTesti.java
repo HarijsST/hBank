@@ -18,6 +18,9 @@ public class GramatuTesti {
         bookShelf.addBook(greatGatsby);
         bookShelf.addBook(animalFarm);
 
-
+        List<Book> allBooks = bookShelf.getAllBooks();
+        for(Book book : allBooks){
+            System.out.println(book);
+        }
     }
 }

@@ -1,12 +1,33 @@
 package exercise.task10_withMap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MyBookShelf implements BookShelf {
     private final Map<String, List<Book>> booksMap;
 
+    // 3. Versija
+//    private final Map<String, Map<String, Book>> booksMap;
+
+    // 1. Atslēga - String (Autors), vērtība būtu Map<String, Book> (autora grāmatas)
+    // 2. Atslēga - String (Grāmatas nosaukums), vērtība būtu tad pati grāmata
+    //isais pieraksts
+    // Book book = booksMap.get("Geroge Orwell").get("1984");
+
+    //Garais pieraksts
+    // Map<String, Book> autoraGramatas = booksMap.get("Geroge Orwell");
+    // Book book = autoraGramatas.get("1984");
+
     //         Key (Author)       Value (Books By Author)
     //       George Orwell       List(Animal Farm, 1984)
+    //          Anna Karenina     List(Apple, Peach)
+
+    // bookMap.values()  =  List(Collection)( List(Animal Farm, 1984), List(Apple, Peach))
+    // newBookList = tukšs
+    // List(Animal Farm, 1984) - 1. iterācija = newBookList.addAll() -> newBookList(Animal Farm, 1984)
+    // List(Apple, Peach) - 2. iterācija = newBookList.addAll()  -> newBookList(Animal Farm, 1984, Apple, Peach)
 
     public MyBookShelf() {
         booksMap = new HashMap<>();
@@ -18,7 +39,9 @@ public class MyBookShelf implements BookShelf {
         if (booksMap.containsKey(author)) {
             booksMap.get(author).add(book);
         } else {
-            booksMap.put(author, List.of(book));
+            List<Book> books = new ArrayList<>();
+            books.add(book);
+            booksMap.put(author, books);
         }
     }
 
@@ -29,7 +52,12 @@ public class MyBookShelf implements BookShelf {
     // 5. beigās atgriez aizpildītu sarakstu (to kuru uztaisīji punktā 2.)
     @Override
     public List<Book> getAllBooks() {
-        return null;
+        List<List<Book>> values = new ArrayList<>(booksMap.values());
+        List<Book> newBookList = new ArrayList<>();
+        for (List<Book> authorBooks : values) {
+            newBookList.addAll(authorBooks);
+        }
+        return newBookList;
     }
 
     @Override
@@ -58,7 +86,7 @@ public class MyBookShelf implements BookShelf {
     @Override
     public void removeBook(Book book) {
         List<Book> booksByAuthor = booksMap.get(book.getAuthor());
-        if(booksByAuthor != null){
+        if (booksByAuthor != null) {
             booksByAuthor.remove(book);
         }
     }
@@ -79,9 +107,11 @@ public class MyBookShelf implements BookShelf {
 
     @Override
     public void removeBooksByAuthor(String author) {
-
+        booksMap.remove(author);
     }
 
+    //For ciklā ejam cauri books
+    // Katra iteracijā izsaucam metodi addBook ar tekošo grāmatu
     @Override
     public void addBooks(List<Book> books) {
 
