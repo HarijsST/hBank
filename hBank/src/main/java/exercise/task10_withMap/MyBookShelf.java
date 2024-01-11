@@ -73,13 +73,25 @@ public class MyBookShelf implements BookShelf {
     // Dabūjam visas grāmatas un tad meklējam pēc nosaukuma
     @Override
     public Book findBookByTitle(String title) {
-        return null;
+        Book bookByTitle = null;
+        for(Book books : getAllBooks()){
+            if(books.getTitle().equals(title)){
+                bookByTitle = books;
+            }
+        }
+        return bookByTitle;
     }
 
     // Dabūjam visas grāmatas un tad meklējam pēc perioda
     @Override
     public List<Book> findBookReleasedInPeriod(int yearFrom, int yearTo) {
-        return null;
+        List<Book> releasedPeriod = new ArrayList<>();
+        for(Book books : getAllBooks()){
+            if(books.getYear() >= yearFrom && books.getYear() <= yearTo){
+                releasedPeriod.add(books);
+            }
+        }
+        return releasedPeriod;
     }
 
     // Dabūjam autora grāmatas un no tā saraksta izņemam konkrēto grāmatu
@@ -102,7 +114,11 @@ public class MyBookShelf implements BookShelf {
     // Svarīgi!
     @Override
     public void removeBookByTitle(String title) {
-
+        for(Book books : getAllBooks()){
+            if (books.getTitle().equals(title)){
+                removeBook(books);
+            }
+        }
     }
 
     @Override
@@ -114,6 +130,9 @@ public class MyBookShelf implements BookShelf {
     // Katra iteracijā izsaucam metodi addBook ar tekošo grāmatu
     @Override
     public void addBooks(List<Book> books) {
-
+        Book book = null;
+        for(int i = 0; i <= books.size(); i++){
+            addBook(book);
+        }
     }
 }

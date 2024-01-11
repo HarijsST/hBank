@@ -22,5 +22,9 @@ public class GramatuTesti {
         for(Book book : allBooks){
             System.out.println(book);
         }
+//        System.out.println(bookShelf.findBookByTitle("Animal Farm"));
+//        System.out.println(bookShelf.findBookReleasedInPeriod(1810, 1930));
+        bookShelf.removeBookByTitle("1984");
+        System.out.println(bookShelf.getAllBooks());
     }
 }
