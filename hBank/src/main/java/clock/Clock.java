@@ -95,7 +95,7 @@ public class Clock extends JFrame {
         }
     }
     public static void main(String[] args) {
-        Locale.setDefault(Locale.ENGLISH);
+        Locale.setDefault(Locale.ENGLISH); // Priekš pulsteņa
         new Clock();
     }
 }
