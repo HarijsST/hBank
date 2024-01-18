@@ -2,13 +2,13 @@
 ## 1 Uzdevums
 ### Funkcionālais kalulators
 
-**Klase FunctionalCalculator**
+**Klase functionalCalculator**
 
 Pa soļiem:
 
-1. Izveidojiet klasi FunctionalCalculator
+1. Izveidojiet klasi functionalCalculator
 ```java
-public class FunctionalCalculator {
+public class functionalCalculator {
 
     public static BiFunction<Double, Double, Double> sum() {
         return null;
@@ -39,48 +39,49 @@ public class FunctionalCalculator {
 
 Pa soļiem:
 
-1. Izveidojied testa klasi FunctionalCaclulatorTest iepriekš uzrakstītajai klasei FunctionalCalculator.
+1. Izveidojied testa klasi FunctionalCaclulatorTest iepriekš uzrakstītajai klasei functionalCalculator.
+
 ```java
 class FunctionalCalculatorTest {
 
-    @Test
-    public void shouldSumTwoNumbers() {
-        double result = FunctionalCalculator.sum().apply(10.0, 5.0);
+   @Test
+   public void shouldSumTwoNumbers() {
+      double result = functionalCalculator.sum().apply(10.0, 5.0);
 
-        Assertions.assertEquals(15.0, result);
-    }
+      Assertions.assertEquals(15.0, result);
+   }
 
-    @Test
-    public void shouldSubtractTwoNumbers() {
-        double result = FunctionalCalculator.subtract().apply(10.0, 5.0);
+   @Test
+   public void shouldSubtractTwoNumbers() {
+      double result = functionalCalculator.subtract().apply(10.0, 5.0);
 
-        Assertions.assertEquals(5.0, result);
-    }
+      Assertions.assertEquals(5.0, result);
+   }
 
-    @Test
-    public void shouldMultiplyTwoNumbers() {
-        double result = FunctionalCalculator.multiply().apply(10.0, 5.0);
+   @Test
+   public void shouldMultiplyTwoNumbers() {
+      double result = functionalCalculator.multiply().apply(10.0, 5.0);
 
-        Assertions.assertEquals(50.0, result);
-    }
+      Assertions.assertEquals(50.0, result);
+   }
 
-    @Test
-    public void shouldDivideTwoNumbers() {
-        double result = FunctionalCalculator.divide().apply(10.0, 5.0);
+   @Test
+   public void shouldDivideTwoNumbers() {
+      double result = functionalCalculator.divide().apply(10.0, 5.0);
 
-        Assertions.assertEquals(2.0, result);
-    }
+      Assertions.assertEquals(2.0, result);
+   }
 
-    @Test
-    public void shouldSquareNumber() {
-        double result = FunctionalCalculator.square().apply(10.0);
+   @Test
+   public void shouldSquareNumber() {
+      double result = functionalCalculator.square().apply(10.0);
 
-        Assertions.assertEquals(100.0, result);
-    }
-    
+      Assertions.assertEquals(100.0, result);
+   }
+
 }
 ```
-2. Izpildiet testu un pārliecinaties par testa pareizību. Ja testa izpildē ir kļūdas, tad veicam labojumus klasē FunctionalCalculator.
+2. Izpildiet testu un pārliecinaties par testa pareizību. Ja testa izpildē ir kļūdas, tad veicam labojumus klasē functionalCalculator.
 
 ## 2 Uzdevums
 ### Figuru laukumu aprēķins

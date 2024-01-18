@@ -18,13 +18,16 @@ public class GramatuTesti {
         bookShelf.addBook(greatGatsby);
         bookShelf.addBook(animalFarm);
 
-        List<Book> allBooks = bookShelf.getAllBooks();
-        for(Book book : allBooks){
-            System.out.println(book);
-        }
-//        System.out.println(bookShelf.findBookByTitle("Animal Farm"));
+//        List<Book> allBooks = bookShelf.getAllBooks();
+//        for(Book book : allBooks){
+//            System.out.println(book);
+//        }
 //        System.out.println(bookShelf.findBookReleasedInPeriod(1810, 1930));
-        bookShelf.removeBookByTitle("1984");
+//        bookShelf.removeBookByTitle("1984");
+//        System.out.println(bookShelf.getAllBooks());
         System.out.println(bookShelf.getAllBooks());
+        bookShelf.removeBooksByAuthor("George Orwell");
+        System.out.println(bookShelf.getAllBooks());
+
     }
 }
